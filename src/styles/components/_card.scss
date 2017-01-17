@@ -1,0 +1,162 @@
+$card-img-height: 230px;
+$card-act-height: 50px;
+
+.card {
+  @extend .is-animated;
+  border-radius: $border-radius;
+  overflow: hidden;
+  background-color: #FFFFFF;
+
+  &-stacked {
+    margin-bottom: $grid-spacer;
+  }
+
+  &-header {
+    height: $navbar-width;
+    background-color: $brand-pri;
+    line-height: $navbar-width;
+    color: $font-light;
+  }
+
+  .card-img {
+    @extend .is-animated;
+    height: $card-img-height;
+    background-position: center;
+    background-size: cover;
+
+
+    &-hover {
+      @extend .is-animated;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      background-color: rgba($brand-pri, .95);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .card-info {
+    padding: $spacer;
+  }
+}
+
+.card-alert {
+  .card-title {
+    margin-bottom: .5rem;
+  }
+
+  .card-link {
+    margin-top: .75rem;
+    display: inline-block;
+    padding: .5rem 1rem;
+    background-color: $brand-focus;
+    color: $font-light;
+    font-size: .9rem;
+    border-radius: $border-radius;
+  }
+}
+
+.card-song {
+
+  &:hover {
+    .card-weight, .card-tag-item {
+      opacity: 1;
+    }
+  }
+
+  .card-img-hover {
+    color: $font-light;
+
+
+    .card-img-top:hover, .card-img-act-link:hover {
+      color: $brand-focus;
+    }
+
+    .card-img-top {
+      @extend .is-animated;
+      width: 100%;
+      height: calc(#{$card-img-height} - #{$card-act-height});
+      line-height: calc(#{$card-img-height} - 60%);
+      text-align: center;
+    }
+
+    .card-img-act {
+      width: 100%;
+      list-style: none;
+
+      &-item {
+        display: inline-block;
+        float: left;
+        width: 33.3%;
+      }
+
+      &-link {
+        @extend .is-animated;
+        line-height: $card-act-height;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+  .card-info {
+
+    .card-title:hover, .card-artist:hover {
+      color: $brand-focus;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      padding-bottom: .15rem;
+    }
+
+    .card-artist {
+      font-size: 1rem;
+      padding-bottom: .15rem;
+    }
+
+    .card-tags {
+      margin: 0;
+      padding: 0;
+
+      .card-tag-item {
+        display: inline-block;
+
+        & + .card-tag-item {
+          margin-left: .25rem;
+        }
+      }
+
+      .card-tag-link {
+        font-size: .75rem;
+        padding: .2rem .3rem;
+        border-radius: $border-radius;
+        color: $font-light;
+        text-transform: capitalize;
+
+        &:hover {
+          background-color: $brand-focus;
+        }
+
+      }
+    }
+  }
+
+  .card-weights {
+    height: 5px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .card-weight {
+      float: left;
+      display: inline-block;
+      height: 5px;
+    }
+  }
+}

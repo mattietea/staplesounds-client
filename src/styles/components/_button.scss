@@ -1,0 +1,15 @@
+.btn {
+  border-radius: $border-radius;
+  padding: 10px;
+  text-align: center;
+
+
+  &-warning {
+    background-color: $error;
+    color: $font-light;
+
+    &:hover {
+      background-color: darken($error, 5%);
+    }
+  }
+}

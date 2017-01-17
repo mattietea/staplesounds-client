@@ -1,0 +1,165 @@
+<div class="row">
+  <div class="offset-lg-2 offset-md-1 col-md-10 col-lg-8">
+    <div class="card">
+      <div class="card-header text-center">
+        <span *ngIf="is_new">New Song</span>
+        <span *ngIf="!is_new">Edit Song</span>
+      </div>
+      <form class="card-info">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-error" *ngIf="error">
+              <h4 class="alert-title">{{ error.error.name }}</h4>
+              <p class="alert-text"> {{ error.error.message }} </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="song-url">
+              <small>SoundCloud URL</small>
+            </label>
+
+            <div class="form-field-group">
+              <input type="text" [(ngModel)]="song.url" class="form-field-base light-field d-block is-stacked" name="url"
+                     id="song-url" placeholder="SoundCloud URL">
+              <a (click)="resolveSong()" class="form-field-addon">
+                <i class="fa fa-binoculars" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <label for="song-title">
+              <small>Title</small>
+            </label>
+            <input type="text" [(ngModel)]="song.title" class="form-field-base light-field d-block is-stacked"
+                   name="title" id="song-title" placeholder="Title">
+
+            <label for="song-artist">
+              <small>Artist</small>
+            </label>
+            <input type="text" [(ngModel)]="song.artist" class="form-field-base light-field d-block is-stacked"
+                   name="artist" id="song-artist" placeholder="Artist">
+
+            <label for="song-audio">
+              <small>Audio</small>
+            </label>
+            <input type="text" [(ngModel)]="song.audio" class="form-field-base light-field d-block is-stacked"
+                   name="audio" id="song-audio" placeholder="Audio">
+
+            <label for="song-image">
+              <small>Image</small>
+            </label>
+            <input type="text" [(ngModel)]="song.image" class="form-field-base light-field d-block is-stacked"
+                   name="image" id="song-image" placeholder="Image">
+
+            <label for="song-download">
+              <small>Download</small>
+            </label>
+            <input type="text" [(ngModel)]="song.download" class="form-field-base light-field d-block is-stacked"
+                   name="download" id="song-download" placeholder="Download">
+          </div>
+          <div class="col-md-6">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-hipHop">
+                  <small>Hip Hop</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.hipHop" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="hipHop" id="song-genre-hipHop" placeholder="Hip Hop">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-dubstep">
+                  <small>Dubstep</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.dubstep" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="dubstep" id="song-genre-dubstep" placeholder="Dubstep">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-house">
+                  <small>House</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.house" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="house" id="song-genre-house" placeholder="House">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-techno">
+                  <small>Techno</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.techno" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="techno" id="song-genre-techno" placeholder="Techno">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-bass">
+                  <small>Bass</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.bass" (keyup)="getGenreTotal($event)" class="form-field-base light-field d-block is-stacked"
+                       name="base" id="song-genre-bass" placeholder="Bass">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-pop">
+                  <small>Pop</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.pop" (keyup)="getGenreTotal($event)" class="form-field-base light-field d-block is-stacked"
+                       name="dnb" id="song-genre-pop" placeholder="Pop">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-rock">
+                  <small>Rock</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.rock" (keyup)="getGenreTotal($event)" class="form-field-base light-field d-block is-stacked"
+                       name="rock" id="song-genre-rock" placeholder="Rock">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-house">
+                  <small>Indie</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.indie" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="indie" id="song-genre-indie" placeholder="Indie">
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-house">
+                  <small>Future</small>
+                </label>
+                <input type="number" [(ngModel)]="song.genres.future" (keyup)="getGenreTotal($event)"
+                       class="form-field-base light-field d-block is-stacked" name="future" id="song-genre-future" placeholder="Future">
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="song-genre-total">
+                  <small>Genre Total (100)</small>
+                </label>
+                <input type="text" [value]="genreTotal" class="form-field-base light-field d-block is-stacked" name="song-genre-total"
+                       id="song-genre-total" placeholder="Genre Total">
+              </div>
+            </div>
+
+            <div class="col-xs-12">
+              <label >
+                <small> 	&nbsp; </small>
+              </label>
+              <button (click)="submitSong()" class="form-btn d-block">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

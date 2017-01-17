@@ -1,0 +1,25 @@
+.tab-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: $brand-pri;
+  overflow: hidden;
+
+  &-item {
+    width: 50%;
+    float: left;
+    display: inline-block;
+    text-align: center;
+  }
+
+  &-link {
+    height: $navbar-width;
+    line-height: $navbar-width;
+    color: $font-light;
+
+    &:hover, &.is-active {
+      background-color: $brand-pri-dark;
+    }
+
+  }
+}

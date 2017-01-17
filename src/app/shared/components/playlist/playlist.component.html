@@ -1,0 +1,34 @@
+<div class="playlist" [class.is-active]="playlist_vis">
+  <div class="playlist-title">
+    <div class="title-icon">
+      <i class="fa fa-list" aria-hidden="true"></i>
+    </div>
+    <div class="title">
+      Your Playlist
+    </div>
+
+    <div class="title-icon"></div>
+  </div>
+
+  <ul class="playlist-items">
+    <li class="playlist-item" *ngFor="let song of user_playlist; let i = index">
+      <div class="playlist-actions">
+        <a class="close" (click)="removeFromUserPlaylist(i)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="playlist-info" (click)="setCurrentSong(i)">
+        <div class="playlist-img" [style.background-image]="'url(' + song.image + ')'">
+        </div>
+        <ul class="playlist-item-info">
+          <li>
+            <a class="playlist-info-track is-truncated"> {{song.title}} </a></li>
+          <li>
+            <a class="playlist-info-artist is-truncated text-sm"> {{song.artist}} </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+</div>

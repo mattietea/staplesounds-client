@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+$brand-pri: #2C3E50;
+$brand-pri-dark: darken($brand-pri, 5%);
+$brand-pri-light: lighten($brand-pri, 5%);
+$brand-focus: #1ABC9C;
+$body-bg: #ecf0f1;
+
+$error: lighten(#e74c3c, 5%);
+
+$font-light: #ecf0f1;
+$font-pri: darken(#757575, 20%);
+$font-sec: #757575;
+$font-tri: #BDBDBD;
+
+$font-family-pri: 'Varela Round', sans-serif;
+$font-size-base: 15px;
+$font-weight-base: 400;
+
+$border-color: #D9DCDE;
+$border-radius: .15rem;
+$border-base: 2px solid $border-color;
+
+$navbar-width: 50px;
+
+$spacer: 1rem;
+$spacer-2: 2rem;
+$grid-spacer: 1.5rem;
+
+$playlist-width: 200px;

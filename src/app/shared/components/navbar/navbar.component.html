@@ -1,0 +1,35 @@
+<ul class="navbar">
+    <li class="navbar-item">
+        <a class="navbar-link"  [routerLink]="'/search'" routerLinkActive="active">
+            <i class="fa fa-search fa-fw" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="navbar-item">
+        <a class="navbar-link" [routerLink]="'/recent'" routerLinkActive="active">
+            <i class="fa fa-home fa-fw" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="navbar-item">
+        <a class="navbar-link" [routerLink]="'/trending'" routerLinkActive="active">
+            <i class="fa fa-list-ol fa-fw" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="navbar-item">
+        <a class="navbar-link" [routerLink]="'/user/favorites'" routerLinkActive="active">
+            <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="navbar-item">
+        <a *ngIf="!session_status" class="navbar-link" [routerLink]="'/user/registration'" routerLinkActive="active">
+            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+        </a>
+      <a *ngIf="session_status" class="navbar-link" [routerLink]="'/user/settings'" routerLinkActive="active">
+        <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
+      </a>
+    </li>
+  <li *ngIf="is_admin" class="navbar-item">
+    <a class="navbar-link" [routerLink]="'/songs/new'" routerLinkActive="active">
+      <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>

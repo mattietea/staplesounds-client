@@ -1,0 +1,61 @@
+<ul class="player is-active" [class.is-active]="song">
+  <li class="player-item">
+    <a class="player-link" (click)="toggleVolControl()">
+      <i class="fa fa-volume-up" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <a class="player-link" (click)="getPreviousSong()">
+      <i class="fa fa-step-backward fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <a class="player-link" *ngIf="!is_playable">
+      <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+    </a>
+    <a (click)="togglePlay()" class="player-link" *ngIf="!is_playing && is_playable">
+      <i class="fa fa-play fa-fw"></i>
+    </a>
+    <a (click)="togglePlay()" class="player-link" *ngIf="is_playing && is_playable">
+      <i class="fa fa-pause fa-fw"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <a class="player-link" (click)="getNextSong()">
+      <i class="fa fa-step-forward fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <a class="player-link" [class.is-active]="is_repeating" (click)="toggleRepeat()">
+      <i class="fa fa-repeat fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <div class="player-link text-sm">
+      {{ current_time | time }}
+    </div>
+  </li>
+  <li class="player-item player-slider">
+    <input #slider title="player-slider" type="range" step=".01" (input)="setCurrentTime(slider.value)" class="player-link range-green" min="0"
+           [value]="current_time" [max]="full_time">
+  </li>
+  <li class="player-item">
+    <div class="player-link text-sm">
+      {{ full_time | time }}
+    </div>
+  </li>
+  <li class="player-item">
+    <a class="player-link">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="player-item">
+    <a class="player-link">
+      <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+<div class="player-vol" [class.is-active]="is_updating_vol && song">
+  <input #vol title="player-vol" (blur)="toggleVolControl(false)" step=".05" value=".7" min="0" max="1" type="range" (input)="setCurrentVol(vol.value)"  class="range-green">
+</div>

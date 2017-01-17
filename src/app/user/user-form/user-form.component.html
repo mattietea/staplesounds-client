@@ -1,0 +1,12 @@
+<form>
+  <div class="alert alert-error" *ngIf="error">
+    <h4 class="alert-title">{{ error.error.name }}</h4>
+    <p class="alert-text"> {{ error.error.message }} </p>
+  </div>
+  <input  type="text"     [(ngModel)]="user.username"  name="username"  class="form-field-base d-block is-stacked text-center" placeholder="Username"      autocomplete="false" *ngIf="!signIn">
+  <input  type="text"     [(ngModel)]="user.firstName" name="firstName" class="form-field-base d-block is-stacked text-center" placeholder="First Name"    autocomplete="false" *ngIf="!signIn">
+  <input  type="text"     [(ngModel)]="user.lastName"  name="lastName"  class="form-field-base d-block is-stacked text-center" placeholder="Last Name"     autocomplete="false" *ngIf="!signIn">
+  <input  type="email"    [(ngModel)]="user.email"     name="email"     class="form-field-base d-block is-stacked text-center" placeholder="Email Address" autocomplete="false">
+  <input  type="password" [(ngModel)]="user.password"  name="password"  class="form-field-base d-block is-stacked text-center" placeholder="Password"      autocomplete="false">
+  <button type="button"   (click)="register()"         name="submit"    class="form-btn d-block text-center"> Submit </button>
+</form>

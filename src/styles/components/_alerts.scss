@@ -1,0 +1,30 @@
+.alert {
+  width: 100%;
+  float: left;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  &-title {
+    padding: .5rem;
+  }
+
+  &-text {
+    word-wrap: break-word;
+    padding: .5rem;
+  }
+}
+
+.alert-error {
+
+  .alert-title {
+    background-color: $error;
+    color: $font-light;
+  }
+
+  .alert-text {
+    border: 2px solid $error;
+    border-top: 0;
+  }
+
+}

@@ -1,0 +1,25 @@
+.navbar {
+  margin: 0;
+  position: fixed;
+  height: 100vh;
+  width: $navbar-width;
+  background-color: $brand-pri;
+
+
+  &-link {
+    @extend .is-animated;
+    height: $navbar-width;
+    width: $navbar-width;
+    line-height: $navbar-width;
+    text-align: center;
+    color: $font-light;
+
+    &:hover {
+      background-color: $brand-pri-dark;
+    }
+
+    &.active {
+      background-color: $brand-pri-light;
+    }
+  }
+}

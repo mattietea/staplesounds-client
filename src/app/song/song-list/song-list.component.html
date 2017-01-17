@@ -1,0 +1,9 @@
+<section class="row" *ngIf="!songs">
+  <div class="loading col-xs-12 text-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+  </div>
+</section>
+
+<section class="row" *ngIf="songs?.length > 0">
+  <app-song-card class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+</section>

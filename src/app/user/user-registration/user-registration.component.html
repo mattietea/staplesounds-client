@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="offset-lg-3 offset-md-2 col-md-8 col-lg-6">
+    <div class="card">
+      <ul class="tab-menu">
+        <li class="tab-menu-item">
+          <a (click)="toggleTab(true)" [class.is-active]="current_tab" class="tab-menu-link">Sign In</a>
+        </li>
+        <li class="tab-menu-item">
+          <a (click)="toggleTab(false)" [class.is-active]="!current_tab" class="tab-menu-link">Sign Up</a>
+        </li>
+      </ul>
+      <div class="card-info">
+        <div *ngIf="current_tab" class="tab-body">
+          <app-user-sign-in></app-user-sign-in>
+        </div>
+        <div *ngIf="!current_tab" class="tab-body">
+          <app-user-sign-up></app-user-sign-up>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
