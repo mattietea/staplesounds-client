@@ -8,7 +8,9 @@ export class Song {
                 public id?: string,
                 public url?: string,
                 public created?: any,
-                public genres?: Genres) {
+                public genres?: Genres,
+                public rank?: number
+    ) {
         this.genres = new Genres();
     }
 }

@@ -8,27 +8,23 @@ import {SessionService} from "../../authentication/session.service";
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  private session_status: boolean;
+  private is_authed: boolean;
+  private is_admin: boolean;
   private session_status_subscription: Subscription;
-  private is_admin: boolean = false;
 
   constructor(private _sessionService: SessionService) {
-    this.session_status_subscription = this._sessionService.checkUserSession().subscribe(
+    this.session_status_subscription = this._sessionService.getUserSession().subscribe(
       res => {
-        this.session_status = res;
-        if (res) {
-          this.is_admin = this._sessionService.getCurrentUser().user.admin;
-        }
+        this.is_authed = res.authed;
+        this.is_admin = res.admin;
       }
-    );
+    )
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.session_status_subscription.unsubscribe();
   }
-
 
 }

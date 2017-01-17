@@ -20,10 +20,10 @@
         </a>
     </li>
     <li class="navbar-item">
-        <a *ngIf="!session_status" class="navbar-link" [routerLink]="'/user/registration'" routerLinkActive="active">
+        <a *ngIf="!is_authed" class="navbar-link" [routerLink]="'/user/registration'" routerLinkActive="active">
             <i class="fa fa-user fa-fw" aria-hidden="true"></i>
         </a>
-      <a *ngIf="session_status" class="navbar-link" [routerLink]="'/user/settings'" routerLinkActive="active">
+      <a *ngIf="is_authed" class="navbar-link" [routerLink]="'/user/settings'" routerLinkActive="active">
         <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
       </a>
     </li>

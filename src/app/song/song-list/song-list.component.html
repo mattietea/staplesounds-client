@@ -5,5 +5,13 @@
 </section>
 
 <section class="row" *ngIf="songs?.length > 0">
-  <app-song-card class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+  <div *ngIf="!horizontal && !list">
+    <app-song-card class="col-xs-12 col-sm-6 col-md-4 col-lg-3" [horizontal]="horizontal" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+  </div>
+  <div *ngIf="horizontal && !list">
+    <app-song-card   [horizontal]="horizontal" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+  </div>
+  <div *ngIf="horizontal && list">
+    <app-song-card   [horizontal]="horizontal" class="col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+  </div>
 </section>

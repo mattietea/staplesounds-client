@@ -46,4 +46,11 @@ export class UserService {
       .catch(err => Observable.throw(err));
   }
 
+  public updateUser(user: User): Observable<any> {
+    let url = `${API_ENDPOINT}Accounts/${user.id}`;
+    return this._http.put(url, user, { headers: this._sessionService.buildHeader() })
+      .map(data => data.json)
+      .catch(err => Observable.throw(err));
+  }
+
 }

@@ -1,34 +1,41 @@
 import { Injectable } from '@angular/core';
-import {Subject, BehaviorSubject} from "rxjs";
+import {Subject, BehaviorSubject, Observable} from "rxjs";
 import {Headers} from "@angular/http";
+import {isNullOrUndefined} from "util";
 
 @Injectable()
 export class SessionService {
 
-  private session_status:Subject<any> = new BehaviorSubject<any>(false);
+  private session_broken:Subject<boolean> = new BehaviorSubject<boolean>(false);
   private current_user:any;
+  private session_status:Subject<any> = new BehaviorSubject<any>({ admin: false, authed: false });
 
-  constructor() { }
 
-  public checkUserSession() {
+  constructor() {}
+
+  public getUserSession() {
+    this.checkUserSession();
+    return this.session_status;
+  }
+
+  public checkUserSession(){
     let storage = localStorage.getItem('current_user');
-    if (storage) {
+    if (!isNullOrUndefined(storage)) {
       this.startUserSession(JSON.parse(storage));
     } else {
       this.endUserSession();
     }
-    return this.session_status;
   }
 
   public startUserSession(res) {
     localStorage.setItem('current_user', JSON.stringify(res));
     this.current_user = res;
-    this.session_status.next(true);
+    this.session_status.next({ admin: res.user.admin, authed: true });
   }
 
   public endUserSession() {
     localStorage.removeItem('current_user');
-    this.session_status.next(false);
+    this.session_status.next({admin: false, authed: false});
     this.current_user = null;
   }
 

@@ -1,5 +1,11 @@
 <div class="row">
   <div class="offset-lg-3 offset-md-2 col-md-8 col-lg-6">
+    <div class="card card-stacked">
+      <div class="card-header text-center">Account Settings</div>
+      <div class="card-info">
+        <app-user-form  *ngIf="user" [user]="user.user" [is_editing]="true" [is_signing_in]="false"></app-user-form>
+      </div>
+    </div>
     <a (click)="signOut()" class="btn btn-warning d-block">Sign Out</a>
   </div>
 </div>

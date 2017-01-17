@@ -9,10 +9,9 @@ export class AdminGuard implements CanActivate {
   constructor(private _sessionService: SessionService, private _router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this._sessionService.checkUserSession().map(val => val)
+    return this._sessionService.getUserSession().map(val => val.admin)
       .take(1)
-      .do(auth => {
-        if (!this._sessionService.getCurrentUser().user.admin || !auth) {
+      .do(auth => { if (!auth) {
           this._router.navigate(['recent']);
         }
       });

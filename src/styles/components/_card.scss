@@ -1,11 +1,12 @@
 $card-img-height: 230px;
 $card-act-height: 50px;
 
+// CARD BASE
+
 .card {
-  @extend .is-animated;
   border-radius: $border-radius;
-  overflow: hidden;
   background-color: #FFFFFF;
+  overflow: hidden;
 
   &-stacked {
     margin-bottom: $grid-spacer;
@@ -18,28 +19,165 @@ $card-act-height: 50px;
     color: $font-light;
   }
 
-  .card-img {
-    @extend .is-animated;
-    height: $card-img-height;
-    background-position: center;
-    background-size: cover;
+}
 
+$card-img-height-h: 150px;
+$card-act-height-h: 50px;
 
-    &-hover {
-      @extend .is-animated;
-      height: 100%;
+.card-horizontal {
+
+  .card-img, .card-info {
+    float: left;
+  }
+
+  .card-img-hover {
+    .card-img-top {
       width: 100%;
-      opacity: 0;
-      background-color: rgba($brand-pri, .95);
+      height: calc(#{$card-img-height-h} - #{$card-act-height-h});
+      line-height: calc(#{$card-img-height-h} - 60%);
+      text-align: center;
+    }
 
-      &:hover {
-        opacity: 1;
+    .card-img-act {
+      width: 100%;
+      list-style: none;
+
+      &-item {
+        display: inline-block;
+        float: left;
+        @extend .width-responsive;
+      }
+
+      &-link {
+        line-height: $card-act-height;
+        text-align: center;
       }
     }
   }
+  .card-img {
+    width: $card-img-height-h;
+    height: $card-img-height-h;
+  }
+
+
 
   .card-info {
-    padding: $spacer;
+    width: calc(100% - #{$card-img-height-h});
+    padding: .75rem;
+  }
+
+}
+
+// CARD IMAGE
+
+.card-img {
+  height: $card-img-height;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+
+}
+
+// CARD IMAGE HOVER
+
+.card-img-hover {
+  height: 100%;
+  width: 100%;
+  color: $font-light;
+  background-color: rgba($brand-pri, .95);
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  a:hover {
+    color: $brand-focus;
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: calc(#{$card-img-height} - #{$card-act-height});
+    line-height: calc(#{$card-img-height} - 60%);
+    text-align: center;
+  }
+
+  .card-img-act {
+    width: 100%;
+    list-style: none;
+
+    &-item {
+      display: inline-block;
+      float: left;
+      @extend .width-responsive;
+    }
+
+    &-link {
+      line-height: $card-act-height;
+      text-align: center;
+    }
+
+  }
+}
+
+// CARD INFO
+.card-info {
+  padding: $spacer;
+
+  .card-title:hover, .card-artist:hover {
+    color: $brand-focus;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    padding-bottom: .15rem;
+  }
+
+  .card-artist {
+    font-size: 1rem;
+    padding-bottom: .15rem;
+  }
+}
+
+// CARD TAGS
+.card-tags {
+  margin: 0;
+  padding: 0;
+
+  .card-tag-item {
+    display: inline-block;
+
+    & + .card-tag-item {
+      margin-left: .25rem;
+    }
+  }
+
+  .card-tag-link {
+    font-size: .75rem;
+    padding: .2rem .3rem;
+    border-radius: $border-radius;
+    color: $font-light;
+    text-transform: capitalize;
+
+    &:hover {
+      background-color: $brand-focus;
+    }
+
+  }
+}
+
+// CARD WEIGHTS
+.card-weights {
+  height: 5px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  .card-weight {
+    float: left;
+    display: inline-block;
+    height: 5px;
   }
 }
 
@@ -59,104 +197,15 @@ $card-act-height: 50px;
   }
 }
 
-.card-song {
-
-  &:hover {
-    .card-weight, .card-tag-item {
-      opacity: 1;
-    }
-  }
-
-  .card-img-hover {
-    color: $font-light;
-
-
-    .card-img-top:hover, .card-img-act-link:hover {
-      color: $brand-focus;
-    }
-
-    .card-img-top {
-      @extend .is-animated;
-      width: 100%;
-      height: calc(#{$card-img-height} - #{$card-act-height});
-      line-height: calc(#{$card-img-height} - 60%);
-      text-align: center;
-    }
-
-    .card-img-act {
-      width: 100%;
-      list-style: none;
-
-      &-item {
-        display: inline-block;
-        float: left;
-        width: 33.3%;
-      }
-
-      &-link {
-        @extend .is-animated;
-        line-height: $card-act-height;
-        text-align: center;
-      }
-
-    }
-
-  }
-
-  .card-info {
-
-    .card-title:hover, .card-artist:hover {
-      color: $brand-focus;
-    }
-
-    .card-title {
-      font-size: 1.1rem;
-      padding-bottom: .15rem;
-    }
-
-    .card-artist {
-      font-size: 1rem;
-      padding-bottom: .15rem;
-    }
-
-    .card-tags {
-      margin: 0;
-      padding: 0;
-
-      .card-tag-item {
-        display: inline-block;
-
-        & + .card-tag-item {
-          margin-left: .25rem;
-        }
-      }
-
-      .card-tag-link {
-        font-size: .75rem;
-        padding: .2rem .3rem;
-        border-radius: $border-radius;
-        color: $font-light;
-        text-transform: capitalize;
-
-        &:hover {
-          background-color: $brand-focus;
-        }
-
-      }
-    }
-  }
-
-  .card-weights {
-    height: 5px;
-    overflow: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    .card-weight {
-      float: left;
-      display: inline-block;
-      height: 5px;
-    }
-  }
+.card-ranking {
+  background-color: $body-bg;
+  text-align: center;
+  color: darken($body-bg, 30%);
+  height: 50px;
+  line-height: 50px;
+  border-radius: $border-radius;
+  width: 100%;
+  display: inline-block;
+  float: left;
+  margin-bottom: .5rem;
 }

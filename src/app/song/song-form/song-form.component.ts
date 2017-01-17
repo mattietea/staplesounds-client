@@ -3,6 +3,7 @@ import {Song} from "../../shared/models/song";
 import {SoundCloudService} from "../../shared/services/soundcloud.service";
 import {Router} from "@angular/router";
 import {SongService} from "../../shared/services/song.service";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-song-form',
@@ -11,23 +12,20 @@ import {SongService} from "../../shared/services/song.service";
 })
 export class SongFormComponent implements OnInit {
 
-  @Input() song;
-  private is_new;
+  @Input() song: Song;
+  @Input() is_new: boolean;
   private genreTotal;
-  private error = false;
+  private error;
 
   constructor(private _soundCloudService: SoundCloudService, private _router: Router, private _songService: SongService) {
-    if (!this.song) {
+    if (!this.is_new) {
       this.song = new Song;
-      this.is_new = true;
       this.genreTotal = 0;
-    } else {
-      this.is_new = false;
-      this.genreTotal = 100;
     }
   }
 
   ngOnInit() {
+    this.getGenreTotal();
   }
 
   resolveSong() {
@@ -42,7 +40,7 @@ export class SongFormComponent implements OnInit {
       );
     } else {
       this._songService.putSong(this.song).subscribe(
-        data => {},
+        data => this._router.navigate(['/songs/', this.song.id]),
         err => this.error = err.json()
       );
     }
@@ -55,9 +53,11 @@ export class SongFormComponent implements OnInit {
 
   totalGenre() {
     let total = 0;
-    for (let value in this.song.genres) {
-      if (this.song.genres[value]) {
-        total += this.song.genres[value];
+    for (let key in this.song.genres) {
+      if (this.song.genres[key] > 0 && this.song.genres[key] != null) {
+        total += this.song.genres[key];
+      } else {
+        delete this.song.genres[key];
       }
     }
     return total

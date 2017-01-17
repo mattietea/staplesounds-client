@@ -1,0 +1,21 @@
+.header {
+  padding-bottom: $grid-spacer;
+}
+
+.header-trending {
+  text-align: center;
+  color: $font-sec;
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .tag-focus {
+    font-size: 1.3rem;
+    margin-left: .25rem;
+    padding: .35rem .75rem .35rem .75rem;
+    border-radius: $border-radius;
+    background-color: $brand-focus;
+    color: $font-light;
+  }
+}

@@ -9,6 +9,8 @@ import {Song} from "../../shared/models/song";
 export class SongListComponent implements OnInit {
 
   @Input() songs:Array<Song>;
+  @Input() horizontal: boolean;
+  @Input() list: boolean;
 
   constructor() { }
 

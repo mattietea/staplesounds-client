@@ -16,7 +16,7 @@ export class SoundCloudService {
         song.url    = data.permalink_url;
         song.title  = data.title;
         song.artist = data.user.username;
-        song.audio  = `${data.stream_url}${CLIENT_ID_PARAM}`;
+        song.audio  = data.stream_url;
         song.image  = this.setImageSize(data.artwork_url);
         if (data.download_url) {
           song.download = data.download_url;

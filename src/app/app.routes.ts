@@ -17,7 +17,7 @@ import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'recent', pathMatch: 'full' },
+    { path: '', redirectTo: 'trending', pathMatch: 'full' },
     { path: 'recent', component: RecentComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'search', component: SearchComponent},
