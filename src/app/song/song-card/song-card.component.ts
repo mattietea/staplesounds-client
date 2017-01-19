@@ -6,6 +6,7 @@ import {SongService} from "../../shared/services/song.service";
 import {Observable, Subscriber, Observer, Subscription} from "rxjs";
 import {UserService} from "../../shared/services/user.service";
 import {SessionService} from "../../shared/authentication/session.service";
+import {LayoutService} from "../../shared/services/layout.service";
 
 @Component({
   selector: 'app-song-card',
@@ -22,7 +23,7 @@ export class SongCardComponent implements OnInit, OnDestroy {
   private is_admin:boolean;
   private session_status_subscription: Subscription;
 
-  constructor(private _playerService: PlayerService, private _songService: SongService, private _userService: UserService, private _sessionService: SessionService) {
+  constructor(private _playerService: PlayerService, private _songService: SongService, private _userService: UserService, private _sessionService: SessionService, private _layoutService: LayoutService) {
     this.session_status_subscription = this._sessionService.getUserSession().subscribe(
       res => {
         this.is_admin = res.admin;
@@ -31,6 +32,10 @@ export class SongCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+  }
+
+  buildNotification(message: string, type: string) {
+    this._layoutService.buildNotification(message, type);
   }
 
   setCurrentSong() {
@@ -44,14 +49,14 @@ export class SongCardComponent implements OnInit, OnDestroy {
 
   addToFavorites() {
     this._userService.addToFavorite(this.song).subscribe(
-      res => console.log(this.song.title + " added"),
+      res => this.buildNotification("Added to favorites", "default"),
       err => console.log(err)
     );
   }
 
   incSongRank(val: number) {
     this._songService.incSongRank(this.song.id, val).subscribe(
-      res => console.log("Increased ranking to " + this.song.rank),
+      res => {console.log('Song rank increased')},
       err => console.log(err)
     );
   }

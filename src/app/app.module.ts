@@ -37,6 +37,9 @@ import { UserRegistrationComponent } from './user/user-registration/user-registr
 import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
 import {SoundCloudService} from "./shared/services/soundcloud.service";
+import { NotificationsComponent } from './shared/components/notifications/notifications.component';
+import { NotificationComponent } from './shared/components/notifications/notification/notification.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -65,6 +68,9 @@ import {SoundCloudService} from "./shared/services/soundcloud.service";
         PopoverComponent,
         SearchComponent,
         UserRegistrationComponent,
+        NotificationsComponent,
+        NotificationComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,

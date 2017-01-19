@@ -50,6 +50,10 @@ export class PlayerService {
     return this.user_playlist;
   }
 
+  private buildNotification(message: string, type: string) {
+    this._layoutService.buildNotification(message, type);
+  }
+
   public addToUserPlaylist(song: Song) {
     let exists = false;
     let index = null;
@@ -65,8 +69,10 @@ export class PlayerService {
 
     if (!exists) {
       this.user_playlist.push(song);
+      this.buildNotification("Added to playlist", "default")
     } else {
       this.removeFromUserPlaylist(index);
+      this.buildNotification("Removed from playlist", "default")
     }
   }
 

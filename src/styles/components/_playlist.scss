@@ -42,85 +42,89 @@
     height: calc(100% - 50px - #{$navbar-width});
     overflow-y: scroll;
 
-    .playlist-item {
-      height: 50px;
-      border-bottom: 1px solid $brand-pri-light;
-      position: relative;
-      list-style: none;
-      overflow: hidden;
+
+  }
+
+}
+
+.playlist-item {
+  height: 50px;
+  border-bottom: 1px solid $brand-pri-light;
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+
+  &:hover {
+    background-color: $brand-pri-light;
+
+    .playlist-actions {
+      opacity: 1;
+    }
+  }
+
+  .playlist-actions {
+    overflow: hidden;
+    right: 10px;
+    opacity: 0;
+    position: absolute;
+
+    .close {
+      background-color: $brand-pri-dark;
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+      margin-top: 10px;
+      line-height: 30px;
+      color: $font-light;
+      float: left;
+      display: inline-block;
+      text-align: center;
 
       &:hover {
-        background-color: $brand-pri-light;
-
-        .playlist-actions {
-          opacity: 1;
-        }
+        background-color: $brand-focus;
       }
+    }
+  }
 
-      .playlist-actions {
-        overflow: hidden;
-        right: 10px;
-        opacity: 0;
-        position: absolute;
+  .playlist-info {
+    padding: 5px 5px 0px 5px;
+    cursor: pointer;
 
-        .close {
-          background-color: $brand-pri-dark;
-          height: 30px;
-          width: 30px;
-          border-radius: 100%;
-          margin-top: 10px;
-          line-height: 30px;
-          color: $font-light;
-          float: left;
-          display: inline-block;
-          text-align: center;
+    .playlist-img {
+      height: 40px;
+      width: 40px;
+      background-position: center;
+      background-size: cover;
+      float: left;
+      font-size: 1.2rem;
+      display: inline-block;
+      border-radius: $border-radius;
+    }
 
-          &:hover {
-            background-color: $brand-focus;
-          }
+    .playlist-item-info {
+      list-style: none;
+      margin-left: 5px;
+      float: left;
+      display: inline-block;
+      width: calc(100% - 50px);
+      margin-top: 5px;
+
+      li {
+        display: block;
+        line-height: 1;
+        list-style: none;
+
+        a {
+          line-height: 1;
         }
-      }
-
-      .playlist-info {
-        padding: 5px;
-        cursor: pointer;
-
-        .playlist-img {
-          height: 40px;
-          width: 40px;
-          background-position: center;
-          background-size: cover;
-          float: left;
-          font-size: 1.2rem;
-          display: inline-block;
-          border-radius: $border-radius;
+        .playlist-info-track {
+          font-size: .9rem;
+          line-height: normal;
         }
 
-        .playlist-item-info {
-          list-style: none;
-          margin-left: 5px;
-          float: left;
-          display: inline-block;
-          width: calc(100% - 50px);
-          margin-top: .5rem;
-
-          li {
-            display: block;
-            line-height: 1;
-            list-style: none;
-
-            a {
-              line-height: 1;
-            }
-            .playlist-info-track {
-              font-size: .9rem;
-            }
-
-            .playlist-info-artist {
-              font-size: .8rem;
-            }
-          }
-
+        .playlist-info-artist {
+          font-size: .8rem;
+          line-height: normal;
         }
       }
 

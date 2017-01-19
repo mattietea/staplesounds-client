@@ -1,0 +1,43 @@
+footer {
+  width: 100%;
+  background-color: $brand-pri-dark;
+  text-align: left;
+  padding: $grid-spacer $grid-spacer calc(#{$navbar-width} + #{$grid-spacer}) calc(#{$navbar-width} + #{$grid-spacer});
+  color: $font-light;
+  overflow: hidden;
+
+  &.has-playlist {
+    padding-right: calc(#{$navbar-width} + #{$grid-spacer});
+  }
+
+  a:hover {
+    background-color: $brand-pri-light;
+  }
+}
+
+.btn-group {
+  border-radius: $border-radius;
+  overflow: hidden;
+  float: left;
+
+
+  a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: $brand-pri;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+  }
+}
+
+.btn-footer {
+  float: right;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: $brand-pri;
+  border-radius: $border-radius;
+  padding: 0 .75rem;
+}

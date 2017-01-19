@@ -51,6 +51,7 @@ export class TrendingComponent implements OnInit, OnDestroy {
     this.songs_subscription = this._songService.getSongs(this.buildTrendingQuery(0, 7, 5)).subscribe(
       res => {
         this.songs = res;
+        console.log(this.songs);
         this._playerService.setPagePlaylist(res);
       },
       err => console.log(Observable.throw(err))
@@ -72,11 +73,10 @@ export class TrendingComponent implements OnInit, OnDestroy {
         {"created": {"gt": end}},
         {"created": {"lt": start}}
       ]},
-      "order": ["created DESC", "rank DESC"],
+      "order": ["rank DESC"],
       "limit": size
     };
 
-    console.log(JSON.stringify(query1));
     return query1;
   }
 

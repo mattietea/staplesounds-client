@@ -11,11 +11,19 @@ html {
   font-size: $font-size-base;
 }
 
+.is-last {
+  padding-bottom: calc(#{$navbar-width} - #{$grid-spacer})
+}
+
+.container-inner {
+  min-height: 100vh;
+}
+
 body {
   background-color: $body-bg;
 
   .container-main {
-    padding: $grid-spacer calc(#{$grid-spacer} / 2) calc(#{$grid-spacer} + (#{$navbar-width} - #{$grid-spacer})) calc(#{$navbar-width} + .75rem);
+    padding: $grid-spacer calc(#{$grid-spacer} / 2) 0 calc(#{$navbar-width} + (#{$grid-spacer} / 2));
 
     &.has-playlist {
       padding-right: calc(#{$navbar-width} + .75rem);

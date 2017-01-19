@@ -4,8 +4,6 @@ import { SongComponent } from "./song/song.component";
 import { RecentComponent } from "./pages/recent/recent.component";
 import {SongDetailsComponent} from "./song/song-details/song-details.component";
 import {UserComponent} from "./user/user.component";
-import {UserSignInComponent} from "./user/user-registration/user-sign-in/user-sign-in.component";
-import {UserSignUpComponent} from "./user/user-registration/user-sign-up/user-sign-up.component";
 import {UserSettingsComponent} from "./user/user-settings/user-settings.component";
 import {UserFavoritesComponent} from "./user/user-favorites/user-favorites.component";
 import {TrendingComponent} from "./pages/trending/trending.component";
@@ -17,7 +15,7 @@ import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'trending', pathMatch: 'full' },
+    { path: '', redirectTo: 'recent', pathMatch: 'full' },
     { path: 'recent', component: RecentComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'search', component: SearchComponent},

@@ -18,6 +18,26 @@
     list-style: none;
     float: left;
 
+    .playlist-item {
+      width: 200px;
+      margin-right: .5rem;
+      background-color: $brand-pri-dark;
+      border-bottom: 0;
+
+      &:hover {
+        background-color: $brand-pri-light;
+      }
+
+      .playlist-info-track, .playlist-info-artist {
+        color: $font-light;
+        line-height: normal;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
     .player-link {
       text-align: center;
       height: $navbar-width;

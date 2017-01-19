@@ -1,0 +1,45 @@
+$notification-width: 230px;
+
+.noti-container {
+  position: fixed;
+  width: $notification-width;
+  padding: calc(#{$grid-spacer} / 2);
+  top: 0;
+  right: 0;
+  z-index: 1000;
+
+  &.has-playlist {
+    right: $navbar-width;
+  }
+
+  .noti-item {
+    list-style: none;
+    padding: 1rem;
+    background-color: rgba(#333333, .98);
+    border-radius: $border-radius;
+    margin-bottom: calc(#{$grid-spacer} / 3);
+    overflow: hidden;
+
+
+    .noti-title, .noti-action {
+      display: inline-block;
+      vertical-align: middle;
+      float: left;
+    }
+
+    .noti-title {
+      color: $font-light;
+      font-size: .85rem;
+      width: calc(100% - 35px);
+    }
+
+    .noti-action {
+      height: 100%;
+      width: 35px;
+      margin-top: -1px;
+      text-align: right;
+      vertical-align: top;
+    }
+
+  }
+}

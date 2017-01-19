@@ -1,6 +1,10 @@
+<app-notifications></app-notifications>
 <app-navbar></app-navbar>
 <app-playlist></app-playlist>
 <main class="container-main" [class.has-playlist]="playlist_vis">
+  <div class="container-inner">
     <router-outlet></router-outlet>
+  </div>
 </main>
+<app-footer></app-footer>
 <app-player></app-player>

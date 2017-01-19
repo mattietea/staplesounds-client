@@ -4,6 +4,8 @@ import {Subscription, Observable} from "rxjs";
 import {PlayerService} from "../../services/player.service";
 import {CLIENT_ID_PARAM} from "../../utilities/constants";
 import {isNullOrUndefined} from "util";
+import {UserService} from "../../services/user.service";
+import {LayoutService} from "../../services/layout.service";
 
 @Component({
   selector: 'app-player',
@@ -23,7 +25,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private is_repeating: boolean = false;
   private is_updating_vol: boolean = false;
 
-  constructor(private _playerService: PlayerService) {
+  constructor(private _playerService: PlayerService, private _userService: UserService, private _layoutService: LayoutService) {
     this.song_subscription = this._playerService.getCurrentSong().subscribe(
       res => this.setPlayer(res),
       err => console.log(Observable.throw(err))
@@ -76,6 +78,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
   }
 
+  private addToUserPlaylist() {
+    this._playerService.addToUserPlaylist(this.song);
+  }
+
+  private addToFavorites() {
+    this._userService.addToFavorite(this.song).subscribe(
+      res => this.buildNotification("Added to favorites", "default"),
+      err => console.log(err)
+    );
+  }
+
   private getNextSong() {
     this._playerService.getNextSong();
   }
@@ -102,6 +115,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private toggleRepeat() {
     this.is_repeating = !this.is_repeating;
+  }
+
+  private buildNotification(message: string, type: string) {
+    this._layoutService.buildNotification(message, type);
   }
 
   @HostListener('document:keypress', ['$event'])

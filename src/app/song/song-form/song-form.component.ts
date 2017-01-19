@@ -1,9 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, HostListener} from '@angular/core';
 import {Song} from "../../shared/models/song";
 import {SoundCloudService} from "../../shared/services/soundcloud.service";
 import {Router} from "@angular/router";
 import {SongService} from "../../shared/services/song.service";
 import {isNullOrUndefined} from "util";
+import {GENRE_LIST} from "../../shared/utilities/constants";
 
 @Component({
   selector: 'app-song-form',
@@ -16,11 +17,14 @@ export class SongFormComponent implements OnInit {
   @Input() is_new: boolean;
   private genreTotal;
   private error;
+  private genre_list = GENRE_LIST;
 
   constructor(private _soundCloudService: SoundCloudService, private _router: Router, private _songService: SongService) {
     if (!this.is_new) {
       this.song = new Song;
       this.genreTotal = 0;
+    } else {
+
     }
   }
 
@@ -47,11 +51,8 @@ export class SongFormComponent implements OnInit {
 
   }
 
-  getGenreTotal(event?: any) {
-    this.genreTotal = this.totalGenre();
-  }
-
-  totalGenre() {
+  @HostListener('document:keyup', ['$event'])
+  getGenreTotal(event?: Event) {
     let total = 0;
     for (let key in this.song.genres) {
       if (this.song.genres[key] > 0 && this.song.genres[key] != null) {
@@ -60,7 +61,11 @@ export class SongFormComponent implements OnInit {
         delete this.song.genres[key];
       }
     }
-    return total
+    this.genreTotal = total
+  }
+
+  totalGenre() {
+
   }
 
 }

@@ -1,0 +1,3 @@
+<ul class="noti-container" [class.has-playlist]="playlist_vis">
+  <app-notification *ngFor="let notification of notifications" [notification]="notification"></app-notification>
+</ul>

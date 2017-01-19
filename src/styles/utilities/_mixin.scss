@@ -1,18 +1,22 @@
 @mixin placeholder($color) {
   &::-webkit-input-placeholder {
     color: $color;
+    text-transform: capitalize;
     font-family: $font-family-pri;
   }
   &:-moz-placeholder {
     color: $color;
+    text-transform: capitalize;
     font-family: $font-family-pri;
   }
   &::-moz-placeholder {
     color: $color;
+    text-transform: capitalize;
     font-family: $font-family-pri;
   }
   &:-ms-input-placeholder {
     color: $color;
+    text-transform: capitalize;
     font-family: $font-family-pri;
   }
 }

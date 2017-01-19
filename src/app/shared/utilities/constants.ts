@@ -5,3 +5,5 @@ export const API_DEV_ENDPOINT = 'http://0.0.0.0:3000/api/';
 export const API_PROD_ENDPOINT = 'https://staplesounds.herokuapp.com/api/';
 
 export const API_ENDPOINT = API_PROD_ENDPOINT;
+
+export const GENRE_LIST = ['hipHop', 'dubstep', 'house', 'future', 'techno', 'bass', 'pop', 'rock', 'indie'];
