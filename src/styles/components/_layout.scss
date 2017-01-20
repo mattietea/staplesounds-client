@@ -19,6 +19,10 @@ html {
   min-height: 100vh;
 }
 
+.has-sidenav {
+  padding-left: calc(#{$sidenav-width});
+}
+
 body {
   background-color: $body-bg;
 
@@ -26,7 +30,7 @@ body {
     padding: $grid-spacer calc(#{$grid-spacer} / 2) 0 calc(#{$navbar-width} + (#{$grid-spacer} / 2));
 
     &.has-playlist {
-      padding-right: calc(#{$navbar-width} + .75rem);
+      padding-right: calc(#{$navbar-width} + (#{$grid-spacer} / 2));
     }
 
   }
@@ -35,7 +39,6 @@ body {
     margin: 0;
 
     [class*="col-"] {
-      @extend .is-animated;
       padding: 0 .75rem;
     }
   }

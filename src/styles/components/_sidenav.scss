@@ -1,0 +1,50 @@
+.sidenav {
+  position: fixed;
+  width: $sidenav-width;
+  height: 100vh;
+  left: calc((#{-$sidenav-width} - #{-$navbar-width}));
+  top: 0;
+  background-color: $brand-pri-light;
+  padding-bottom: calc((#{$grid-spacer} / 2) + #{$navbar-width});
+  overflow-y: scroll;
+
+  &.is-active {
+    left: $navbar-width;
+  }
+
+  .genre-list {
+    width: 100%;
+
+    &.is-dark {
+      background-color: $brand-pri-dark;
+      padding-bottom: calc(#{$grid-spacer} / 2);
+      margin: .5rem .5rem 0;
+      width: calc(100% - 1rem);
+      border-radius: $border-radius;
+    }
+
+    &-item {
+      padding: calc(#{$grid-spacer} / 2)  calc(#{$grid-spacer} / 2) 0;
+      list-style: none;
+      display: block;
+      width: 100%;
+
+      a {
+        text-align: center;
+        padding: calc(#{$grid-spacer} / 2.5) 0;
+        color: $font-light;
+        text-transform: capitalize;
+        font-size: .85rem;
+        border-radius: $border-radius;
+        cursor: pointer;
+
+        &.btn-holder {
+          border: 2px solid lighten($brand-pri-light, 10%);
+          color: lighten($brand-pri-light, 10%);
+          font-weight: 900;
+        }
+      }
+    }
+  }
+}
+

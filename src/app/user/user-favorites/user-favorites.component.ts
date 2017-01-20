@@ -17,8 +17,8 @@ export class UserFavoritesComponent implements OnInit, OnDestroy {
   constructor(private _userService: UserService, private _playerService: PlayerService) {
     this.songs_subscription = this._userService.getFavorites().subscribe(
       res => {
-        this.songs = res;
-        this._playerService.setPagePlaylist(res);
+        this.songs = res.reverse();
+        this._playerService.setPagePlaylist(this.songs);
       },
       err => console.log(Observable.throw(err))
     );

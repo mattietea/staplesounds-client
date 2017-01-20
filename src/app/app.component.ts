@@ -21,11 +21,10 @@ export class AppComponent implements OnDestroy {
       res => this.playlist_vis = res
     );
 
-
-
   }
 
   ngOnDestroy() {
     this.playlist_vis_subscription.unsubscribe();
+
   }
 }

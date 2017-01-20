@@ -1,0 +1,13 @@
+<ul class="genre-list is-dark">
+  <li *ngFor="let genre of active_genre_list; let i = index" class="genre-list-item">
+    <a (click)="removeFromActiveList(i)" class="btn-{{genre}} is-active">{{ genre }}</a>
+  </li>
+  <li *ngIf="active_genre_list.length < 3" class="genre-list-item">
+    <a class="btn-holder">Pick a Filter</a>
+  </li>
+</ul>
+<ul class="genre-list">
+  <li *ngFor="let genre of genre_list; let i = index" class="genre-list-item">
+    <a (click)="addToActiveList(i)" class="btn-{{genre}}">{{ genre }}</a>
+  </li>
+</ul>

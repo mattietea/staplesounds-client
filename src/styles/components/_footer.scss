@@ -10,6 +10,10 @@ footer {
     padding-right: calc(#{$navbar-width} + #{$grid-spacer});
   }
 
+  &.has-sidenav {
+    padding-left: calc(#{$navbar-width} + #{$sidenav-width} + #{$grid-spacer});
+  }
+
   a:hover {
     background-color: $brand-pri-light;
   }

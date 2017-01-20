@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
-import {RecentComponent} from './pages/recent/recent.component';
+import {DiscoverComponent} from './pages/discover/discover.component';
 import {TrendingComponent} from './pages/trending/trending.component';
 import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {PlayerComponent} from './shared/components/player/player.component';
@@ -40,11 +40,13 @@ import {SoundCloudService} from "./shared/services/soundcloud.service";
 import { NotificationsComponent } from './shared/components/notifications/notifications.component';
 import { NotificationComponent } from './shared/components/notifications/notification/notification.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
+import { DiscoverSidenavComponent } from './pages/discover/discover-sidenav/discover-sidenav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        RecentComponent,
+        DiscoverComponent,
         TrendingComponent,
         NavbarComponent,
         PlayerComponent,
@@ -71,6 +73,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
         NotificationsComponent,
         NotificationComponent,
         FooterComponent,
+        SidenavComponent,
+        DiscoverSidenavComponent,
     ],
     imports: [
         BrowserModule,

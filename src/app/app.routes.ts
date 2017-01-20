@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SongComponent } from "./song/song.component";
-import { RecentComponent } from "./pages/recent/recent.component";
+import { DiscoverComponent } from "./pages/discover/discover.component";
 import {SongDetailsComponent} from "./song/song-details/song-details.component";
 import {UserComponent} from "./user/user.component";
 import {UserSettingsComponent} from "./user/user-settings/user-settings.component";
@@ -15,8 +15,8 @@ import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'recent', pathMatch: 'full' },
-    { path: 'recent', component: RecentComponent },
+    { path: '', redirectTo: 'discover', pathMatch: 'full' },
+    { path: 'discover', component: DiscoverComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'search', component: SearchComponent},
     { path: 'songs', component: SongComponent, children: [

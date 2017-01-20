@@ -5,7 +5,7 @@
   left: 0;
   bottom: -$navbar-width;
   background-color: $brand-pri;
-  z-index: 14;
+  z-index: 1100;
 
   &.is-active {
     bottom: 0;
