@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {DiscoverComponent} from './pages/discover/discover.component';
@@ -80,6 +80,7 @@ import { DiscoverSidenavComponent } from './pages/discover/discover-sidenav/disc
         BrowserModule,
         FormsModule,
         HttpModule,
+        ReactiveFormsModule,
         routing
     ],
     providers: [

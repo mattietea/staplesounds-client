@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {isNullOrUndefined} from "util";
 
+
 @Injectable()
 export class UtilityService {
 
@@ -16,8 +17,6 @@ export class UtilityService {
   }
 
 
-
-
   public buildGenreQuery(genres: Array<string>) {
 
   let ref =
@@ -29,14 +28,6 @@ export class UtilityService {
         },
         "order": "created DESC"
       };
-
-  for (let genre in genres) {
-    let random = `genres.${genre}`;
-    // ref.where.and.push({random: {"exists": "true"}});
-  }
-
-   console.log(ref);
-
 
   }
 

@@ -12,4 +12,8 @@ export class Genres {
         public indie?: number)
     {}
 
+
+
 }
+
+
