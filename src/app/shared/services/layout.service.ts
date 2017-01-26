@@ -4,6 +4,7 @@ import {BehaviorSubject, Subject, Observable} from "rxjs";
 @Injectable()
 export class LayoutService {
 
+  private  current_sidenav_vis: boolean;
   private playlist_vis:Subject<boolean> = new BehaviorSubject(false);
   private sidenav_vis:Subject<boolean> = new BehaviorSubject(false);
   private notifications:Subject<any> = new Subject();
@@ -19,8 +20,14 @@ export class LayoutService {
     return this.playlist_vis;
   }
 
-  public updateSidenavVis(value: boolean) {
-    this.sidenav_vis.next(value);
+  public updateSidenavVis(value?: boolean) {
+    if (value) {
+      this.current_sidenav_vis = value;
+      this.sidenav_vis.next(value);
+    } else {
+      this.current_sidenav_vis = !this.current_sidenav_vis;
+      this.sidenav_vis.next(this.current_sidenav_vis)
+    }
   }
 
   public getSidenavVis(): Subject<boolean> {

@@ -6,13 +6,11 @@
   background-color: $brand-pri;
   z-index: 1000;
 
-  &-link {
-    @extend .is-animated;
-    height: $navbar-width;
-    width: $navbar-width;
-    line-height: $navbar-width;
-    text-align: center;
-    color: $font-light;
+  .navbar-item {
+
+    .toggle {
+      display: none;
+    }
 
     &:hover {
       background-color: $brand-pri-dark;
@@ -20,6 +18,24 @@
 
     &.active {
       background-color: $brand-pri-light;
+
+      .base {
+        display: none;
+      }
+
+      .toggle {
+        display: block;
+      }
     }
+  }
+
+  &-link {
+    height: $navbar-width;
+    width: $navbar-width;
+    line-height: $navbar-width;
+    text-align: center;
+    color: $font-light;
+
+
   }
 }

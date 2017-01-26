@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GENRE_LIST} from "../../../shared/utilities/constants";
 import {LayoutService} from "../../../shared/services/layout.service";
-import {UtilityService} from "../../../shared/services/utility.service";
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import {SongService} from "../../../shared/services/song.service";
 import {QUERY_DESC} from "../../../shared/utilities/requests";
 
@@ -12,6 +10,8 @@ import {QUERY_DESC} from "../../../shared/utilities/requests";
   styleUrls: ['./discover-sidenav.component.css']
 })
 export class DiscoverSidenavComponent implements OnInit {
+
+  private genre_list = GENRE_LIST;
 
   private genre = {
     hipHop: {'genres.hipHop': {exists: true}},
@@ -25,7 +25,7 @@ export class DiscoverSidenavComponent implements OnInit {
     indie: {'genres.indie': {exists: true}},
   };
 
-  private ref =
+  private query =
     {
       where: {
         and: []
@@ -34,8 +34,6 @@ export class DiscoverSidenavComponent implements OnInit {
     };
 
 
-  private active_genre_list: Array<string> = [];
-  private genre_list: Array<string> = GENRE_LIST;
 
   constructor(private _layoutService: LayoutService, private _songService: SongService) {
   }
@@ -43,14 +41,10 @@ export class DiscoverSidenavComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeFromActiveList(index: number) {
-    this.active_genre_list.splice(index, 1);
-  }
 
   addToActiveList(val: string) {
-    let queryRef = this.ref.where.and;
+    let queryRef = this.query.where.and;
     let exists = false;
-
     queryRef.forEach((genre, i) => {
       if (genre == this.genre[val]) {
         queryRef.splice(i, 1);
@@ -62,15 +56,11 @@ export class DiscoverSidenavComponent implements OnInit {
     }
 
     if (queryRef.length > 0) {
-      this._songService.setDiscoverSongs(this.ref)
+      this._songService.setDiscoverSongs(this.query)
     } else {
       this._songService.setDiscoverSongs(QUERY_DESC)
     }
 
-  }
-
-  private submit(value: any, event: Event) {
-    console.log(JSON.stringify(value));
   }
 
 }

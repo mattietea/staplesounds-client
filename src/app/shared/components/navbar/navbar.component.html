@@ -1,20 +1,24 @@
 <ul class="navbar">
-    <li class="navbar-item">
-        <a class="navbar-link"  [routerLink]="'/search'" routerLinkActive="active">
+    <li class="navbar-item" [routerLink]="'/search'" routerLinkActive="active">
+        <a class="navbar-link">
             <i class="fa fa-search fa-fw" aria-hidden="true"></i>
         </a>
     </li>
-    <li class="navbar-item">
-        <a class="navbar-link" [routerLink]="'/discover'" routerLinkActive="active">
-          <i class="fa fa-compass fa-fw" aria-hidden="true"></i>        </a>
+    <li class="navbar-item" [routerLink]="'/discover'" routerLinkActive="active">
+        <a class="navbar-link base">
+          <i class="fa fa-compass fa-fw" aria-hidden="true"></i>
+        </a>
+      <a (click)="updateSidenavVis()" class="navbar-link toggle" >
+        <i class="fa fa-filter" aria-hidden="true"></i>
+      </a>
     </li>
-    <li class="navbar-item">
-        <a class="navbar-link" [routerLink]="'/trending'" routerLinkActive="active">
+    <li class="navbar-item" [routerLink]="'/trending'" routerLinkActive="active">
+        <a class="navbar-link" >
             <i class="fa fa-list-ol fa-fw" aria-hidden="true"></i>
         </a>
     </li>
-    <li class="navbar-item">
-        <a class="navbar-link" [routerLink]="'/user/favorites'" routerLinkActive="active">
+    <li class="navbar-item" [routerLink]="'/user/favorites'" routerLinkActive="active">
+        <a class="navbar-link">
             <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
         </a>
     </li>

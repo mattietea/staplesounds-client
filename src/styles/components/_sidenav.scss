@@ -7,6 +7,7 @@
   background-color: $brand-pri-light;
   padding-bottom: calc((#{$grid-spacer} / 2) + #{$navbar-width});
   overflow: hidden;
+  z-index: 999;
 
   &.is-active {
     left: $navbar-width;

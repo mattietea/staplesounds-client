@@ -21,16 +21,12 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  updateSidenavVis(value?: boolean) {
-    if (value) {
-      this._layoutService.updateSidenavVis(value);
-    } else {
-      this._layoutService.updateSidenavVis(!this.sidenav_vis);
-    }
+  public updateSidenavVis(value?) {
+    this._layoutService.updateSidenavVis(this.sidenav_vis);
   }
 
   ngOnDestroy() {
-  this.sidenav_vis_subscription.unsubscribe();
-}
+    this.sidenav_vis_subscription.unsubscribe();
+  }
 
 }
