@@ -4,6 +4,7 @@ import {LayoutService} from "../../../shared/services/layout.service";
 import {UtilityService} from "../../../shared/services/utility.service";
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import {SongService} from "../../../shared/services/song.service";
+import {QUERY_DESC} from "../../../shared/utilities/requests";
 
 @Component({
   selector: 'app-discover-sidenav',
@@ -58,11 +59,12 @@ export class DiscoverSidenavComponent implements OnInit {
     });
     if (!exists) {
       queryRef.push(this.genre[val]);
-      this._songService.getSongs(this.genre).subscribe(
-        res => console.log('Songs updated')
-      )
-    } else {
+    }
 
+    if (queryRef.length > 0) {
+      this._songService.setDiscoverSongs(this.ref)
+    } else {
+      this._songService.setDiscoverSongs(QUERY_DESC)
     }
 
   }

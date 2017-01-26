@@ -1,16 +1,33 @@
 import { Injectable } from '@angular/core';
 import {UtilityService} from "./utility.service";
 import {Http} from "@angular/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {API_ENDPOINT} from "../utilities/constants";
 import {HEADER} from "../utilities/requests";
 import {Song} from "../models/song";
 import {SessionService} from "../authentication/session.service";
+import {PlayerService} from "./player.service";
 
 @Injectable()
 export class SongService {
 
-  constructor(private _http: Http, private _utilityService: UtilityService, private _sessionService: SessionService) { }
+  private discover_songs:Subject<Array<Song>> = new Subject();
+
+  constructor(private _http: Http, private _utilityService: UtilityService, private _sessionService: SessionService, private _playerService: PlayerService) { }
+
+  public setDiscoverSongs(filter?: Object) {
+    this.getSongs(filter).subscribe(
+      res => {
+        this.discover_songs.next(res);
+        this._playerService.setPagePlaylist(res);
+      },
+      err => console.log(err)
+    )
+  }
+
+  public getDiscoverSongs(): Subject<Array<Song>> {
+    return this.discover_songs
+  }
 
   public getSongs(filter?: Object): Observable<any> {
     let url = this._utilityService.getUrl(`${API_ENDPOINT}Songs`, filter);

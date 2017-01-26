@@ -20,12 +20,9 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   private sidenav_vis_subscription: Subscription;
 
   constructor(private _http: Http, private _songService: SongService, private _playerService: PlayerService, private _layoutService: LayoutService) {
-    this.songs_subscription = this._songService.getSongs(QUERY_DESC).subscribe(
-      res => {
-        this.songs = res;
-        this._playerService.setPagePlaylist(res);
-      },
-      err => console.log(Observable.throw(err))
+    this._songService.setDiscoverSongs(QUERY_DESC);
+    this._songService.getDiscoverSongs().subscribe(
+      res => this.songs = res
     );
     this.sidenav_vis_subscription = this._layoutService.getSidenavVis().subscribe(
       res => this.sidenav_vis = res
@@ -37,7 +34,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.songs_subscription.unsubscribe();
+    // this.songs_subscription.unsubscribe();
     this.sidenav_vis_subscription.unsubscribe();
   }
 

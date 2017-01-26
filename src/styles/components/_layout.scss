@@ -37,6 +37,7 @@ body {
 
   .row {
     margin: 0;
+    min-width: 100%;
 
     [class*="col-"] {
       padding: 0 .75rem;
