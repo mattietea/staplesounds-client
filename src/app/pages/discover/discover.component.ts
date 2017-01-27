@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Http} from "@angular/http";
-import {Observable, Observer, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {QUERY_DESC} from "../../shared/utilities/requests";
 import {SongService} from "../../shared/services/song.service";
 import {PlayerService} from "../../shared/services/player.service";
@@ -21,21 +21,20 @@ export class DiscoverComponent implements OnInit, OnDestroy {
 
   constructor(private _http: Http, private _songService: SongService, private _playerService: PlayerService, private _layoutService: LayoutService) {
     this._songService.setDiscoverSongs(QUERY_DESC);
-    this._songService.getDiscoverSongs().subscribe(
+    this.songs_subscription = this._songService.getDiscoverSongs().subscribe(
       res => this.songs = res
     );
     this.sidenav_vis_subscription = this._layoutService.getSidenavVis().subscribe(
       res => this.sidenav_vis = res
     );
-    this._layoutService.updateSidenavVis(true);
   }
 
   ngOnInit() {
   }
 
   ngOnDestroy() {
-    // this.songs_subscription.unsubscribe();
     this.sidenav_vis_subscription.unsubscribe();
+    this.songs_subscription.unsubscribe();
   }
 
 

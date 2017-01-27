@@ -19,6 +19,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
   }
 
   public updateSidenavVis(value?) {

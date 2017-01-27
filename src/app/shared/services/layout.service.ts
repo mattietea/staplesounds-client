@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Subject, Observable} from "rxjs";
+import {isNullOrUndefined} from "util";
 
 @Injectable()
 export class LayoutService {
@@ -21,7 +22,7 @@ export class LayoutService {
   }
 
   public updateSidenavVis(value?: boolean) {
-    if (value) {
+    if (!isNullOrUndefined(value)) {
       this.current_sidenav_vis = value;
       this.sidenav_vis.next(value);
     } else {

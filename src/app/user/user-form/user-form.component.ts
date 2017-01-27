@@ -30,14 +30,14 @@ export class UserFormComponent implements OnInit {
       this._userService.signIn(this.user).subscribe(
         res => {
           this._sessionService.startUserSession(res);
-          this._router.navigate(['/recent']);
+          this._router.navigate(['/discover']);
           this.buildNotification(`Whats up ${res.user.firstName}`, 'default');
         },
         err => this.error = err.json()
       );
     } else if(!this.is_signing_in && !this.is_editing) {
       this._userService.signUp(this.user).subscribe(
-        res => this.buildNotification('Account created', 'default'),
+        res => this.buildNotification('Done. Now sign in!', 'default'),
         err => this.error = err.json()
       );
     } else if (this.is_editing) {

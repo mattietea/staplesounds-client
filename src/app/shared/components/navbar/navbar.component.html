@@ -8,9 +8,7 @@
         <a class="navbar-link base">
           <i class="fa fa-compass fa-fw" aria-hidden="true"></i>
         </a>
-      <a (click)="updateSidenavVis()" class="navbar-link toggle" >
-        <i class="fa fa-filter" aria-hidden="true"></i>
-      </a>
+      <app-sidenav-toggle class="navbar-link toggle"></app-sidenav-toggle>
     </li>
     <li class="navbar-item" [routerLink]="'/trending'" routerLinkActive="active">
         <a class="navbar-link" >

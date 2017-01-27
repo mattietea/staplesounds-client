@@ -22,6 +22,6 @@ export class UserSettingsComponent implements OnInit {
 
   signOut() {
     this._sessionService.endUserSession();
-    this._router.navigate(['/recent']);
+    this._router.navigate(['/discover']);
   }
 }

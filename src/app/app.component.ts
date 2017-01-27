@@ -1,7 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, HostListener} from '@angular/core';
 import {LayoutService} from "./shared/services/layout.service";
 import {Subscription} from "rxjs";
 import {SessionService} from "./shared/authentication/session.service";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -20,11 +21,31 @@ export class AppComponent implements OnDestroy {
     this.playlist_vis_subscription = this._layoutService.getPlaylistVis().subscribe(
       res => this.playlist_vis = res
     );
-
+    this.checkWindowSize();
   }
 
   ngOnDestroy() {
+
     this.playlist_vis_subscription.unsubscribe();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  checkWindowSize(event?) {
+    if (!isNullOrUndefined(event)) {
+      if (event.target.innerWidth < 567) {
+        this._layoutService.updateSidenavVis(false)
+      } else {
+        this._layoutService.updateSidenavVis(true)
+      }
+    } else {
+      if (window.outerWidth < 567) {
+        this._layoutService.updateSidenavVis(false)
+      } else {
+        this._layoutService.updateSidenavVis(true)
+      }
+    }
 
   }
+
+
 }

@@ -23,7 +23,7 @@ html {
   padding-left: calc(#{$sidenav-width});
 
   @media (max-width: 576px) {
-    padding-left: calc((#{$grid-spacer} / 2))
+    padding-left: 0;
   }
 }
 

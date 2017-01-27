@@ -39,7 +39,7 @@ export class SongFormComponent implements OnInit {
   submitSong() {
     if (this.is_new) {
       this._songService.postSong(this.song).subscribe(
-        data => this._router.navigate(['/recent']),
+        data => this._router.navigate(['/discover']),
         err => this.error = err.json()
       );
     } else {
