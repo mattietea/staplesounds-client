@@ -35,7 +35,6 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sidenav_vis_subscription.unsubscribe();
     this.songs_subscription.unsubscribe();
-    this._layoutService.updateSidenavVis(false);
   }
 
 

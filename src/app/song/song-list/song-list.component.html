@@ -6,7 +6,7 @@
 
 <section class="row" *ngIf="songs?.length > 0">
   <div class="row" *ngIf="!horizontal && !list">
-    <app-song-card class="col-xs-12 col-sm-6 col-md-4 col-lg-3" [horizontal]="horizontal" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
+    <app-song-card class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" [horizontal]="horizontal" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>
   </div>
   <div class="row" *ngIf="horizontal && !list">
     <app-song-card   [horizontal]="horizontal" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let song of songs; let i = index" [song]="song" [index]="i"></app-song-card>

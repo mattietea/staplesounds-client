@@ -98,8 +98,11 @@ $card-act-height-h: 50px;
   .card-img-top {
     width: 100%;
     height: calc(#{$card-img-height} - #{$card-act-height});
-    line-height: calc(#{$card-img-height} - 60%);
     text-align: center;
+
+    i {
+      padding-top: 30%;
+    }
   }
 
   .card-img-act {
