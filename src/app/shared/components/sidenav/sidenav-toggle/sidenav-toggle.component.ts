@@ -16,7 +16,7 @@ export class SidenavToggleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sidenav_vis_subscription = this._layoutService.getSidenavVis().subscribe(
-      res => {this.sidenav_vis = res; console.log(res)}
+      res => this.sidenav_vis = res
     )
   }
 
@@ -26,7 +26,6 @@ export class SidenavToggleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sidenav_vis_subscription.unsubscribe();
-
   }
 
 }

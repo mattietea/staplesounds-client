@@ -14,13 +14,25 @@ export class DiscoverSidenavComponent implements OnInit {
   private genre_list = GENRE_LIST;
 
   private genre = {
-    hipHop: {'genres.hipHop': {exists: true}},
-    dubstep: {'genres.dubstep': {exists: true}},
-    house: {'genres.house': {exists: true}},
-    future: {'genres.future': {exists: true}},
-    techno: {'genres.techno': {exists: true}},
-    bass: {'genres.bass': {exists: true}},
     pop: {'genres.pop': {exists: true}},
+    rnb: {'genres.rnb': {exists: true}},
+    hipHop: {'genres.hipHop': {exists: true}},
+
+    house: {'genres.house': {exists: true}},
+    electro: {'genres.electro': {exists: true}},
+    techno: {'genres.techno': {exists: true}},
+
+    dubstep: {'genres.dubstep': {exists: true}},
+    future: {'genres.future': {exists: true}},
+    trap: {'genres.trap': {exists: true}},
+
+    dnb: {'genres.dnb': {exists: true}},
+    beats: {'genres.beats': {exists: true}},
+    ambient: {'genres.ambient': {exists: true}},
+    bass: {'genres.bass': {exists: true}},
+
+    tropical: {'genres.tropical': {exists: true}},
+    funk: {'genres.funk': {exists: true}},
     rock: {'genres.rock': {exists: true}},
     indie: {'genres.indie': {exists: true}},
   };

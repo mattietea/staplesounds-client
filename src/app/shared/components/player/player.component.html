@@ -1,4 +1,4 @@
-<ul class="player is-active" [class.is-active]="song">
+<ul class="player"  [class.is-active]="song">
   <li class="player-item">
     <a class="player-link" (click)="toggleVolControl()">
       <i class="fa fa-volume-up" aria-hidden="true"></i>
@@ -36,8 +36,14 @@
     </div>
   </li>
   <li class="player-item player-slider">
-    <input #slider title="player-slider" type="range" step=".01" (input)="setCurrentTime(slider.value)" class="player-link range-green" min="0"
-           [value]="current_time" [max]="full_time">
+    <div *ngIf="song" [routerLink]="['/songs', song?.id]" class="player-slider-top text-sm is-truncated">
+      {{song?.title}} - {{song?.artist}}
+    </div>
+    <div class="player-slider-btm ">
+      <input #slider title="player-slider" type="range" step=".01" (input)="setCurrentTime(slider.value)"
+             class="range-green" min="0"
+             [value]="current_time" [max]="full_time">
+    </div>
   </li>
   <li class="player-item">
     <div class="player-link text-sm">
@@ -57,5 +63,6 @@
 </ul>
 
 <div class="player-vol" [class.is-active]="is_updating_vol && song">
-  <input #vol title="player-vol" (blur)="toggleVolControl(false)" step=".05" value=".7" min="0" max="1" type="range" (input)="setCurrentVol(vol.value)"  class="range-green">
+  <input #vol title="player-vol" (blur)="toggleVolControl(false)" step=".05" value=".7" min="0" max="1" type="range"
+         (input)="setCurrentVol(vol.value)" class="range-green">
 </div>
