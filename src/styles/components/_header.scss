@@ -1,5 +1,5 @@
 .header {
-  padding-bottom: $grid-spacer;
+  margin-bottom: $grid-spacer;
 }
 
 .header-trending {
@@ -18,4 +18,8 @@
     background-color: $brand-focus;
     color: $font-light;
   }
+}
+
+.header-discover {
+
 }

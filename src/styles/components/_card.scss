@@ -8,6 +8,10 @@ $card-act-height: 50px;
   background-color: #FFFFFF;
   overflow: hidden;
 
+  .card-hero {
+
+  }
+
   &-stacked {
     margin-bottom: $grid-spacer;
   }
@@ -25,6 +29,7 @@ $card-img-height-h: 150px;
 $card-act-height-h: 50px;
 
 .card-horizontal {
+
 
   .card-img, .card-info {
     float: left;
@@ -99,10 +104,10 @@ $card-act-height-h: 50px;
     width: 100%;
     height: calc(#{$card-img-height} - #{$card-act-height});
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    i {
-      padding-top: 30%;
-    }
   }
 
   .card-img-act {

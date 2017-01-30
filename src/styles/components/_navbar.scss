@@ -16,6 +16,10 @@
       background-color: $brand-pri-dark;
     }
 
+    &.is-searching {
+      background-color: $brand-focus;
+    }
+
     &.active {
       background-color: $brand-pri-light;
 
@@ -36,6 +40,8 @@
     text-align: center;
     color: $font-light;
 
-
+    &.is-searching {
+      background-color: $brand-pri;
+    }
   }
 }

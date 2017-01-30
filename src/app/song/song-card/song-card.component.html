@@ -44,7 +44,7 @@
     </ul>
   </div>
 
-  <div *ngIf="horizontal" class="card card-stacked card-horizontal">
+  <div *ngIf="horizontal" class="card card-stacked card-horizontal hidden-sm-down">
     <div class="card-img" [style.background-image]="'url(' + song.image + ')'">
       <div class="card-img-hover">
         <a class="card-img-top" (click)="setCurrentSong()">
@@ -80,6 +80,52 @@
       <div class="card-ranking is-truncated">
         Tracking (Eventually lol)
       </div>
+      <ul class="card-tags">
+        <li class="card-tag-item" *ngFor="let genre of song.genres | keys">
+          <div class="card-tag-link {{genre.key}}"> {{ genre.key }}</div>
+        </li>
+      </ul>
+    </div>
+    <ul class="card-weights">
+      <li  *ngFor="let genre of song.genres | keys" class="card-weight {{genre.key}}"
+           [style.width]="genre.value + '%'"></li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="horizontal" class="card card-stacked hidden-sm-up">
+    <div class="card-img" [style.background-image]="'url(' + song.image + ')'">
+      <div class="card-img-hover">
+        <a class="card-img-top" (click)="setCurrentSong()">
+          <i class="fa fa-play fa-2x" aria-hidden="true"></i>
+        </a>
+        <ul class="card-img-act">
+          <li class="card-img-act-item">
+            <a [href]="song.download" target="_blank" [class.is-disabled]="!song.download" class="card-img-act-link">
+              <i class="fa fa-download" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="card-img-act-item">
+            <a (click)="addToFavorites()" class="card-img-act-link">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="card-img-act-item">
+            <a class="card-img-act-link" (click)="addToUserPlaylist()">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li *ngIf="is_admin" class="card-img-act-item">
+            <a class="card-img-act-link" [routerLink]="['/songs', song.id ,'edit']">
+              <i class="fa fa-gear" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-info">
+      <a [routerLink]="['/songs', song.id]" class="card-title is-truncated"> {{ song.title }}</a>
+      <a [href]="song.url" target="_blank" class="card-artist is-truncated"> {{ song.artist }}</a>
       <ul class="card-tags">
         <li class="card-tag-item" *ngFor="let genre of song.genres | keys">
           <div class="card-tag-link {{genre.key}}"> {{ genre.key }}</div>

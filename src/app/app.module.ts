@@ -43,6 +43,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { DiscoverSidenavComponent } from './pages/discover/discover-sidenav/discover-sidenav.component';
 import { SidenavToggleComponent } from './shared/components/sidenav/sidenav-toggle/sidenav-toggle.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
     declarations: [
@@ -77,6 +78,7 @@ import { SidenavToggleComponent } from './shared/components/sidenav/sidenav-togg
         SidenavComponent,
         DiscoverSidenavComponent,
         SidenavToggleComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,

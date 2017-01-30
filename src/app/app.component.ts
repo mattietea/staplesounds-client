@@ -14,18 +14,18 @@ export class AppComponent implements OnDestroy {
 
   private playlist_vis: boolean;
   private playlist_vis_subscription: Subscription;
-
+  private search_vis: boolean;
+  private search_vis_subscription: Subscription;
 
 
   constructor(private  _layoutService: LayoutService) {
     this.playlist_vis_subscription = this._layoutService.getPlaylistVis().subscribe(
       res => this.playlist_vis = res
     );
+    this.search_vis_subscription = this._layoutService.getSearchVis().subscribe(
+      res => this.search_vis = res
+    );
     this.checkWindowSize();
-  }
-
-  ngOnDestroy() {
-    this.playlist_vis_subscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -43,7 +43,11 @@ export class AppComponent implements OnDestroy {
         this._layoutService.updateSidenavVis(true)
       }
     }
+  }
 
+  ngOnDestroy() {
+    this.playlist_vis_subscription.unsubscribe();
+    this.search_vis_subscription.unsubscribe();
   }
 
 

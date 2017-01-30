@@ -123,9 +123,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   @HostListener('document:keypress', ['$event'])
   private handleKeyEvent(event: KeyboardEvent) {
-    if (event.keyCode == 32 && !isNullOrUndefined(this.song)) {
-      event.preventDefault();
-      this.togglePlay();
+    if ((event.keyCode == 32 || event.charCode == 32) && !isNullOrUndefined(this.song)) {
+      if (event.srcElement) {
+        if (event.srcElement.tagName != "INPUT") {
+          event.preventDefault();
+          this.togglePlay();
+        }
+      } else {
+        event.preventDefault();
+        this.togglePlay();
+      }
     }
   }
 

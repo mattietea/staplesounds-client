@@ -1,7 +1,8 @@
 <app-notifications></app-notifications>
 <app-navbar></app-navbar>
 <app-playlist></app-playlist>
-<main class="container-main" [class.has-playlist]="playlist_vis">
+<app-search *ngIf="search_vis"></app-search>
+<main class="container-main" [class.has-playlist]="playlist_vis" [class.is-hidden]="search_vis">
   <div class="container-inner">
     <router-outlet></router-outlet>
   </div>

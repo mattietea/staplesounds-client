@@ -1,4 +1,33 @@
-<p> Search page in progress </p>
+<div class="search-container">
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="search-input" #searchInput (keyup)="searchSongs(searchInput.value)" type="text" class="search-input" placeholder="Search...">
+      <a class="search-info">
+        <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+      </a>
+    </div>
+  </div>
 
+  <div class="search-results row" *ngIf="songs">
+    <div *ngFor="let song of songs">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="card-result" [routerLink]="['/songs', song.id]" (click)="updateSearchVis()">
+          <img [src]="song.image">
+          <ul class="song-info">
+            <li class="song-title is-truncated">{{song.title}}</li>
+            <li class="song-artist is-truncated text-sm">{{song.artist}}</li>
+            <li>
+            <ul class="card-tags">
+              <li class="card-tag-item" *ngFor="let genre of song.genres | keys">
+                <div class="card-tag-link {{genre.key}}"> {{ genre.key }}</div>
+              </li>
+            </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

@@ -13,12 +13,13 @@ import {SearchComponent} from "./pages/search/search.component";
 import {UserRegistrationComponent} from "./user/user-registration/user-registration.component";
 import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
+import {AboutComponent} from "./pages/about/about.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'discover', pathMatch: 'full' },
     { path: 'discover', component: DiscoverComponent },
     { path: 'trending', component: TrendingComponent },
-    { path: 'search', component: SearchComponent},
+    { path: 'about', component: AboutComponent },
     { path: 'songs', component: SongComponent, children: [
         {path: 'new', component: SongNewComponent, canActivate: [AdminGuard]},
         {path: ':id/edit', component: SongEditComponent, canActivate: [AdminGuard]},

@@ -4,7 +4,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: all .45s;
+  transition: background-color .45s, height .45s, width .45s, left .45s, right .45s, color .45s, margin .45s, opacity .45s, padding .45s;
 }
 
 html {
@@ -19,12 +19,20 @@ html {
   min-height: 100vh;
 }
 
+.p-l-1 {
+  padding-left: 1rem;
+}
+
 .has-sidenav {
   padding-left: calc(#{$sidenav-width});
 
   @media (max-width: 576px) {
     padding-left: 0;
   }
+}
+
+.is-hidden {
+  display: none;
 }
 
 body {
@@ -87,3 +95,21 @@ a {
     width: 25%;
   }
 }
+
+.hidden-sm-down {
+
+  display: block !important;
+  @media (max-width: 576px) {
+    display: none !important;
+  }
+
+}
+
+.hidden-sm-up {
+  display: none !important;
+  @media (max-width: 576px) {
+    display: block !important;
+  }
+
+}
+

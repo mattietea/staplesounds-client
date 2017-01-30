@@ -5,13 +5,28 @@ import {isNullOrUndefined} from "util";
 @Injectable()
 export class LayoutService {
 
-  private  current_sidenav_vis: boolean;
+  private current_search_vis: boolean = false;
+  private current_sidenav_vis: boolean;
   private playlist_vis:Subject<boolean> = new BehaviorSubject(false);
   private sidenav_vis:Subject<boolean> = new BehaviorSubject(false);
+  private search_vis:Subject<boolean> = new BehaviorSubject(false);
   private notifications:Subject<any> = new Subject();
 
   constructor() { }
 
+  public updateSearchVis(value?: boolean) {
+    if (!isNullOrUndefined(value)) {
+      this.current_search_vis = value;
+      this.search_vis.next(value);
+    } else {
+      this.current_search_vis = !this.current_search_vis;
+      this.search_vis.next(this.current_search_vis)
+    }
+  }
+
+  getSearchVis(): Subject<boolean> {
+    return this.search_vis;
+  }
 
   public updatePlaylistVis(value: boolean) {
     this.playlist_vis.next(value);

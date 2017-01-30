@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private is_authed: boolean;
   private is_admin: boolean;
   private session_status_subscription: Subscription;
+  private search_vis: boolean;
+  private search_vis_subscription: Subscription;
 
   constructor(private _sessionService: SessionService, private _layoutService: LayoutService) {
     this.session_status_subscription = this._sessionService.getUserSession().subscribe(
@@ -19,6 +21,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.is_authed = res.authed;
         this.is_admin = res.admin;
       }
+    );
+    this.search_vis_subscription = this._layoutService.getSearchVis().subscribe(
+      res => this.search_vis = res
     )
   }
 
@@ -28,8 +33,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.session_status_subscription.unsubscribe();
   }
 
-  updateSidenavVis() {
-    this._layoutService.updateSidenavVis()
+  updateSearchVis(value?) {
+    this._layoutService.updateSearchVis(value);
   }
 
 }

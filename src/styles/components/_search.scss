@@ -1,0 +1,100 @@
+.search-container {
+  min-height: 100vh;
+  width: calc(100% - #{$navbar-width});
+  background-color: $brand-pri-light;
+  position: fixed;
+  left: $navbar-width;
+  top: 0;
+  z-index: 1050;
+  padding: $grid-spacer;
+
+  .search-input {
+    background-color: $brand-pri-light;
+    @include placeholder($brand-pri-dark);
+    font-size: 2.5rem;
+    border: none;
+    width: calc(100% - 45px);
+    color: $font-light;
+    margin-bottom: $grid-spacer;
+    float: left;
+  }
+
+  .search-info {
+    width: 45px;
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    padding-top: 9px;
+    color: $brand-pri-dark;
+
+    &:hover {
+      color: $brand-focus;
+    }
+  }
+
+  .search-results {
+    overflow-y: scroll;
+    height: calc(100vh - 45px - (#{$grid-spacer} * 2));
+    cursor: pointer;
+    padding-bottom: $navbar-width;
+
+    .card-result {
+      height: 70px;
+      padding: calc(#{$grid-spacer} / 3);
+      background-color: $brand-pri;
+      margin-bottom: $grid-spacer;
+      border-radius: $border-radius;
+      &:hover {
+        background-color: $brand-pri-dark;
+      }
+
+
+      img {
+        height: 55px;
+        width: 55px;
+        float: left;
+        border-radius: $border-radius;
+      }
+
+      .song-info {
+        float: left;
+        color: $font-light;
+        width: calc(100% - 55px);
+        padding-left: calc((#{$grid-spacer} / 3));
+
+        li {
+          list-style: none;
+          display: block;
+          float: left;
+
+          &.song-artist {
+            margin-bottom: .25rem;
+          }
+        }
+
+        .card-tags {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+
+          .card-tag-item {
+            display: inline-block;
+
+            & + .card-tag-item {
+              margin-left: .25rem;
+            }
+          }
+
+          .card-tag-link {
+            font-size: .65rem;
+            opacity: .8;
+            padding: .15rem .25rem;
+            border-radius: $border-radius;
+            color: $font-light;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+}

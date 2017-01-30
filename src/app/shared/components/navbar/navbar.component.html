@@ -1,35 +1,39 @@
 <ul class="navbar">
-    <li class="navbar-item" [routerLink]="'/search'" routerLinkActive="active">
-        <a class="navbar-link">
-            <i class="fa fa-search fa-fw" aria-hidden="true"></i>
-        </a>
-    </li>
-    <li class="navbar-item" [routerLink]="'/discover'" routerLinkActive="active">
-        <a class="navbar-link base">
-          <i class="fa fa-compass fa-fw" aria-hidden="true"></i>
-        </a>
-      <app-sidenav-toggle class="navbar-link toggle"></app-sidenav-toggle>
-    </li>
-    <li class="navbar-item" [routerLink]="'/trending'" routerLinkActive="active">
-        <a class="navbar-link" >
-            <i class="fa fa-list-ol fa-fw" aria-hidden="true"></i>
-        </a>
-    </li>
-    <li class="navbar-item" [routerLink]="'/user/favorites'" routerLinkActive="active">
-        <a class="navbar-link">
-            <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
-        </a>
-    </li>
-    <li class="navbar-item">
-        <a *ngIf="!is_authed" class="navbar-link" [routerLink]="'/user/registration'" routerLinkActive="active">
-            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-        </a>
-      <a *ngIf="is_authed" class="navbar-link" [routerLink]="'/user/settings'" routerLinkActive="active">
-        <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
-      </a>
-    </li>
+  <li class="navbar-item" (click)="updateSearchVis()" [class.is-searching]="search_vis">
+    <a class="navbar-link">
+      <i *ngIf="!search_vis" class="fa fa-search fa-fw" aria-hidden="true"></i>
+      <i *ngIf="search_vis" class="fa fa-times" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="navbar-item" [routerLink]="'/discover'" routerLinkActive="active">
+    <a class="navbar-link base" (click)="updateSearchVis(false)">
+      <i class="fa fa-compass fa-fw" aria-hidden="true"></i>
+    </a>
+    <a *ngIf="search_vis" (click)="updateSearchVis(false)" class="navbar-link toggle">
+      <i class="fa fa-compass fa-fw" aria-hidden="true"></i>
+    </a>
+    <app-sidenav-toggle *ngIf="!search_vis"  class="navbar-link toggle"></app-sidenav-toggle>
+  </li>
+  <li class="navbar-item" [routerLink]="'/trending'" routerLinkActive="active">
+    <a class="navbar-link" (click)="updateSearchVis(false)" >
+      <i class="fa fa-list-ol fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="navbar-item" [routerLink]="'/user/favorites'" routerLinkActive="active">
+    <a class="navbar-link" (click)="updateSearchVis(false)" >
+      <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="navbar-item">
+    <a *ngIf="!is_authed" class="navbar-link" (click)="updateSearchVis(false)"  [routerLink]="'/user/registration'" routerLinkActive="active">
+      <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+    </a>
+    <a *ngIf="is_authed" class="navbar-link" (click)="updateSearchVis(false)"  [routerLink]="'/user/settings'" routerLinkActive="active">
+      <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
+    </a>
+  </li>
   <li *ngIf="is_admin" class="navbar-item">
-    <a class="navbar-link" [routerLink]="'/songs/new'" routerLinkActive="active">
+    <a class="navbar-link" (click)="updateSearchVis(false)"  [routerLink]="'/songs/new'" routerLinkActive="active">
       <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>
     </a>
   </li>

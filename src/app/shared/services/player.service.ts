@@ -69,10 +69,10 @@ export class PlayerService {
 
     if (!exists) {
       this.user_playlist.push(song);
-      this.buildNotification("Added to playlist", "default")
+      this.buildNotification("Added to queue", "default")
     } else {
       this.removeFromUserPlaylist(index);
-      this.buildNotification("Removed from playlist", "default")
+      this.buildNotification("Removed from queue", "default")
     }
   }
 
