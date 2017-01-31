@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, HostListener} from '@angular/core';
+import {Component, OnInit, OnDestroy, HostListener, style, state, animate, transition, trigger} from '@angular/core';
 import {Song} from "../../models/song";
 import {Subscription, Observable} from "rxjs";
 import {PlayerService} from "../../services/player.service";
@@ -6,6 +6,8 @@ import {CLIENT_ID_PARAM} from "../../utilities/constants";
 import {isNullOrUndefined} from "util";
 import {UserService} from "../../services/user.service";
 import {LayoutService} from "../../services/layout.service";
+import {SessionService} from "../../authentication/session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-player',
@@ -24,11 +26,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private is_playing: boolean = false;
   private is_repeating: boolean = false;
   private is_updating_vol: boolean = false;
+  private is_authed: boolean;
+  private session_status_subscription: Subscription;
 
-  constructor(private _playerService: PlayerService, private _userService: UserService, private _layoutService: LayoutService) {
+  constructor(private _playerService: PlayerService, private _userService: UserService, private _layoutService: LayoutService, private _sessionService: SessionService, private _router: Router) {
     this.song_subscription = this._playerService.getCurrentSong().subscribe(
       res => this.setPlayer(res),
       err => console.log(Observable.throw(err))
+    );
+    this.session_status_subscription = this._sessionService.getUserSession().subscribe(
+      res => {
+        this.is_authed = res.authed;
+      }
     )
   }
 
@@ -39,12 +48,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.song = song;
     this.is_playable = false;
     this.audio.src = song.audio + `?${CLIENT_ID_PARAM}`;
+    this.audio.load();
+    console.log("audio Loaded");
 
     this.audio.addEventListener('canplaythrough', () => {
+      console.log("starting canplay");
       this.is_playable = true;
       this.audio.play();
       this.full_time = this.audio.duration;
     });
+
 
     this.audio.addEventListener('timeupdate', () => {
       this.current_time = this.audio.currentTime;
@@ -83,10 +96,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   private addToFavorites() {
-    this._userService.addToFavorite(this.song).subscribe(
-      res => this.buildNotification("Added to favorites", "default"),
-      err => console.log(err)
-    );
+    if (this.is_authed) {
+      this._userService.addToFavorite(this.song).subscribe(
+        res => this.buildNotification("Added to favorites", "default"),
+        err => console.log(err)
+      );
+    } else {
+      this._router.navigate(['/user/sign-in'])
+    }
   }
 
   private getNextSong() {

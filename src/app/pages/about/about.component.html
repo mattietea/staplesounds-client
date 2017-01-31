@@ -1,12 +1,37 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-10 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
-    <div class="card">
-      <div class="card-header p-l-1"> What is this? </div>
-      <div class="card-hero">
-      </div>
-        <div class="card-info">
-
+<div class="col-xs-12 col-sm-12 col-md-12 offset-md-0 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+  <div class="row">
+    <div class="col-xs-12 m-b-2">
+      <div class="card card-stacked ">
+        <div class="card-hero about">
+          <div class="card-hero filter">
+            <div class="card-info">
+              <img src="../../../assets/white_logo.png">
+              <h3>"Curating the best of today's music, so you don't have to. Staplesounds is a streamlined tool for bass
+                bumping, booty popping tracks that'll keep you coming for more."</h3>
+              <p>- Hazza -</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="header header-trending">
+    <div class="header-title">
+      Who are we?
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let user of admin" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="card card-profile card-stacked">
+        <img src="../../../assets/{{user.img}}">
+        <div class="profile-info">
+          <div class="profile-name">{{user.name}}</div>
+          <div class="profile-school text-sm">{{user.school}}</div>
+          <div class="profile-bio">"{{user.bio}}"</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

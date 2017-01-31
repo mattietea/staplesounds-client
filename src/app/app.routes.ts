@@ -9,11 +9,11 @@ import {UserFavoritesComponent} from "./user/user-favorites/user-favorites.compo
 import {TrendingComponent} from "./pages/trending/trending.component";
 import {SongNewComponent} from "./song/song-new/song-new.component";
 import {SongEditComponent} from "./song/song-edit/song-edit.component";
-import {SearchComponent} from "./pages/search/search.component";
-import {UserRegistrationComponent} from "./user/user-registration/user-registration.component";
 import {AuthGuard} from "./shared/authentication/auth.guard";
 import {AdminGuard} from "./shared/authentication/admin.guard";
 import {AboutComponent} from "./pages/about/about.component";
+import {UserSignInComponent} from "./user/user-sign-in/user-sign-in.component";
+import {UserSignUpComponent} from "./user/user-sign-up/user-sign-up.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'discover', pathMatch: 'full' },
@@ -26,7 +26,8 @@ export const routes: Routes = [
         {path: ':id', component: SongDetailsComponent}
     ]},
     { path: 'user', component: UserComponent, children: [
-        {path: 'registration', component: UserRegistrationComponent},
+        {path: 'sign-in', component: UserSignInComponent},
+        {path: 'sign-up', component: UserSignUpComponent},
         {path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard]},
         {path: 'favorites', component: UserFavoritesComponent, canActivate: [AuthGuard]}
     ] }

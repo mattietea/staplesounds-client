@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {SongService} from "../../shared/services/song.service";
 import {isNullOrUndefined} from "util";
 import {GENRE_LIST} from "../../shared/utilities/constants";
+import {SessionService} from "../../shared/authentication/session.service";
 
 @Component({
   selector: 'app-song-form',
@@ -19,13 +20,12 @@ export class SongFormComponent implements OnInit {
   private error;
   private genre_list = GENRE_LIST;
 
-  constructor(private _soundCloudService: SoundCloudService, private _router: Router, private _songService: SongService) {
+  constructor(private _soundCloudService: SoundCloudService, private _router: Router, private _songService: SongService, private _sessionService: SessionService) {
     if (!this.is_new) {
       this.song = new Song;
       this.genreTotal = 0;
-    } else {
-
     }
+    this.song.author = this._sessionService.getCurrentUser().user.username;
   }
 
   ngOnInit() {

@@ -50,14 +50,13 @@ export class SongCardComponent implements OnInit, OnDestroy {
   }
 
   addToFavorites() {
-    console.log(this.is_authed);
     if (this.is_authed) {
       this._userService.addToFavorite(this.song).subscribe(
         res => this.buildNotification("Added to favorites", "default"),
         err => console.log(err)
       );
     } else {
-      this._router.navigate(['/user/registration'])
+      this._router.navigate(['/user/sign-in'])
     }
   }
 

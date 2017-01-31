@@ -31,13 +31,16 @@ export class UserFormComponent implements OnInit {
         res => {
           this._sessionService.startUserSession(res);
           this._router.navigate(['/discover']);
-          this.buildNotification(`Whats up ${res.user.firstName}`, 'default');
+          this.buildNotification(`What's up ${res.user.firstName}?`, 'default');
         },
         err => this.error = err.json()
       );
     } else if(!this.is_signing_in && !this.is_editing) {
       this._userService.signUp(this.user).subscribe(
-        res => this.buildNotification('Done. Now sign in!', 'default'),
+        res => {
+          this.buildNotification('Done. Now sign in!', 'default');
+          this._router.navigate(['/user/sign-in']);
+        },
         err => this.error = err.json()
       );
     } else if (this.is_editing) {

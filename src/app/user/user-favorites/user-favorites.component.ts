@@ -11,7 +11,7 @@ import {PlayerService} from "../../shared/services/player.service";
 })
 export class UserFavoritesComponent implements OnInit, OnDestroy {
 
-  private songs: Array<Song>;
+  private songs: Array<Song> = [];
   private songs_subscription: Subscription;
 
   constructor(private _userService: UserService, private _playerService: PlayerService) {

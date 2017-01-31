@@ -4,7 +4,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: background-color .45s, height .45s, width .45s, left .45s, right .45s, color .45s, margin .45s, opacity .45s, padding .45s;
+  transition: background-color .45s, height .45s, width .45s, left .45s, right .45s, color .45s, margin .45s, opacity .45s, padding .45s, bottom .45s, top .45s, left .45s, right .45s;
 }
 
 html {
@@ -55,6 +55,10 @@ body {
       padding: 0 .75rem;
     }
   }
+}
+
+.m-b-2 {
+  margin-bottom: 2rem;
 }
 
 .d-block {

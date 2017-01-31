@@ -1,1 +1,6 @@
+<div class="row" *ngIf="songs.length == 0">
+  <div class="header header-trending">
+    <div class="header-title">Go <i class="fa fa-heart fa-x2" aria-hidden="true"></i> a song</div>
+  </div>
+</div>
 <app-song-list [songs]="songs" [list]="false" [horizontal]="false"></app-song-list>

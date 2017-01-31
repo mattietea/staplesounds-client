@@ -91,6 +91,7 @@
   left: calc(5px);
   border-radius: $border-radius;
   opacity: 0;
+  z-index: 2000;
 
   &.is-active {
     opacity: 1;

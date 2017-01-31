@@ -9,7 +9,8 @@ export class Song {
                 public url?: string,
                 public created?: any,
                 public genres?: Genres,
-                public rank?: number
+                public rank?: number,
+                public author?: string
     ) {
         this.genres = new Genres();
     }

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="offset-lg-3 offset-md-2 col-md-8 col-lg-6">
+    <div class="card">
+      <ul class="tab-menu">
+        <li class="tab-menu-item">
+          <a class="tab-menu-link" [routerLink]="'/user/sign-in'" routerLinkActive="is-active"> Sign In</a>
+        </li>
+        <li class="tab-menu-item" >
+          <a class="tab-menu-link" [routerLink]="'/user/sign-up'" routerLinkActive="is-active"> Sign Up</a>
+        </li>
+      </ul>
+      <div class="card-info">
+        <app-user-form [user]="user" [is_signing_in]="true" [is_editing]="false"></app-user-form>
+      </div>
+    </div>
+  </div>
+</div>

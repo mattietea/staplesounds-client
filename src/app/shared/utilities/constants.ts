@@ -22,3 +22,5 @@ export const GENRE_LIST = [
   'funk',
   'indie'];
 
+export const SITE_DESC = "Curating the best of today's music, so you don't have to. Staplesounds is a streamlined tool for bass bumping, booty popping tracks that'll keep you coming for more."
+
