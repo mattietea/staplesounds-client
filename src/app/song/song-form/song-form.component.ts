@@ -25,7 +25,7 @@ export class SongFormComponent implements OnInit {
       this.song = new Song;
       this.genreTotal = 0;
     }
-    this.song.author = this._sessionService.getCurrentUser().user.username;
+
   }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class SongFormComponent implements OnInit {
 
   resolveSong() {
     this.song = this._soundCloudService.resolveSong(this.song.url);
+    this.song.author = this._sessionService.getCurrentUser().user.username;
   }
 
   submitSong() {

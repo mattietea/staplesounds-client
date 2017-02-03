@@ -49,10 +49,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.is_playable = false;
     this.audio.src = song.audio + `?${CLIENT_ID_PARAM}`;
     this.audio.load();
-    console.log("audio Loaded");
 
     this.audio.addEventListener('canplaythrough', () => {
-      console.log("starting canplay");
       this.is_playable = true;
       this.audio.play();
       this.full_time = this.audio.duration;

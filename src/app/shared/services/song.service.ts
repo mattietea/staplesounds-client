@@ -15,11 +15,11 @@ export class SongService {
 
   constructor(private _http: Http, private _utilityService: UtilityService, private _sessionService: SessionService, private _playerService: PlayerService) { }
 
-  public setDiscoverSongs(filter?: Object) {
-    this.getSongs(filter).subscribe(
+  public setDiscoverSongs(genres?: Array<string>) {
+    this.getSongsByGenre(genres).subscribe(
       res => {
-        this.discover_songs.next(res);
-        this._playerService.setPagePlaylist(res);
+        this.discover_songs.next(res.json());
+        this._playerService.setPagePlaylist(res.json());
       },
       err => console.log(err)
     )
@@ -38,6 +38,12 @@ export class SongService {
   public getSong(id: number): Observable<any> {
     let url = `${API_ENDPOINT}Songs/${id}`;
     return this._http.get(url, {headers: this._sessionService.buildHeader()}).map(data => data.json())
+      .catch(err => Observable.throw(err));
+  }
+
+  public getSongsByGenre(genres: Array<string>): Observable<any> {
+    let url = `${API_ENDPOINT}Songs/findByGenre?genres=${JSON.stringify(genres)}`;
+    return this._http.get(url, {headers: this._sessionService.buildHeader()})
       .catch(err => Observable.throw(err));
   }
 

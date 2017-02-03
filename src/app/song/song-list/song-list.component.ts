@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Song} from "../../shared/models/song";
 
 @Component({
@@ -12,9 +12,12 @@ export class SongListComponent implements OnInit {
   @Input() horizontal: boolean;
   @Input() list: boolean;
 
-  constructor() { }
 
-  ngOnInit() {
+
+  constructor() {
   }
+
+  ngOnInit() {}
+
 
 }

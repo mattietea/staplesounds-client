@@ -6,94 +6,95 @@
         <span *ngIf="!is_new">Edit Song</span>
       </div>
       <form #song_form class="card-info" (ngSubmit)="submitSong()">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="alert alert-error" *ngIf="error">
-              <h4 class="alert-title">{{ error.error.name }}</h4>
-              <p class="alert-text"> {{ error.error.message }} </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label for="song-url">
-              <small>SoundCloud URL</small>
-            </label>
 
-            <div class="form-field-group">
-              <input type="text" [(ngModel)]="song.url" class="form-field-base light-field d-block is-stacked" name="url" id="song-url" required placeholder="SoundCloud URL">
-              <a (click)="resolveSong()" class="form-field-addon">
-                <i class="fa fa-binoculars" aria-hidden="true"></i>
-              </a>
-            </div>
-
-            <label for="song-title">
-              <small>Title</small>
-            </label>
-            <input type="text" [(ngModel)]="song.title" class="form-field-base light-field d-block is-stacked" required
-                   name="title" id="song-title" placeholder="Title">
-
-            <label for="song-artist">
-              <small>Artist</small>
-            </label>
-            <input type="text" [(ngModel)]="song.artist" class="form-field-base light-field d-block is-stacked" required
-                   name="artist" id="song-artist" placeholder="Artist">
-
-            <label for="song-audio">
-              <small>Audio</small>
-            </label>
-            <input type="text" [(ngModel)]="song.audio" class="form-field-base light-field d-block is-stacked" required
-                   name="audio" id="song-audio" placeholder="Audio">
-
-            <label for="song-image">
-              <small>Image</small>
-            </label>
-            <input type="text" [(ngModel)]="song.image" class="form-field-base light-field d-block is-stacked" required
-                   name="image" id="song-image" placeholder="Image">
-
-            <label for="song-download">
-              <small>Download</small>
-            </label>
-            <input type="text" [(ngModel)]="song.download" class="form-field-base light-field d-block is-stacked"
-                   name="download" id="song-download" placeholder="Download">
-
-            <label for="song-author">
-              <small>Author</small>
-            </label>
-            <input type="text" [(ngModel)]="song.author" class="form-field-base light-field d-block is-stacked"
-                   name="author" id="song-author" placeholder="Author">
-
-          </div>
-
-
-          <div class="col-md-6">
-            <div *ngFor="let genre of genre_list; let i=index" class="col-xs-6">
-              <div class="form-group">
-                <label>
-                  <small>{{ genre }}</small>
-                </label>
-                <input [name]="genre" [placeholder]="genre" [(ngModel)]="song.genres[genre]"
-                       class="form-field-base light-field d-block is-stacked" type="number">
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label>
-                  <small>Genre Total (100)</small>
-                </label>
-                <input type="text" [value]="genreTotal" class="form-field-base light-field d-block is-stacked"
-                       name="song-genre-total" placeholder="Genre Total">
-              </div>
-            </div>
-
+          <div class="row">
             <div class="col-xs-12">
-              <label>
-                <small>&nbsp;</small>
-              </label>
-              <button class="form-btn d-block">Submit</button>
+              <div class="alert alert-error" *ngIf="error">
+                <h4 class="alert-title">{{ error.error.name }}</h4>
+                <p class="alert-text"> {{ error.error.message }} </p>
+              </div>
             </div>
           </div>
-        </div>
 
+          <div class="row">
+              <div class="col-md-6">
+                <label for="song-url">
+                  <small>SoundCloud URL</small>
+                </label>
+
+                <div class="form-field-group">
+                  <input type="text" [(ngModel)]="song.url" class="form-field-base light-field d-block is-stacked" name="url" id="song-url" required placeholder="SoundCloud URL">
+                  <a (click)="resolveSong()" class="form-field-addon">
+                    <i class="fa fa-binoculars" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <label for="song-title">
+                  <small>Title</small>
+                </label>
+                <input type="text" [(ngModel)]="song.title" class="form-field-base light-field d-block is-stacked" required
+                       name="title" id="song-title" placeholder="Title">
+
+                <label for="song-artist">
+                  <small>Artist</small>
+                </label>
+                <input type="text" [(ngModel)]="song.artist" class="form-field-base light-field d-block is-stacked" required
+                       name="artist" id="song-artist" placeholder="Artist">
+
+                <label for="song-audio">
+                  <small>Audio</small>
+                </label>
+                <input type="text" [(ngModel)]="song.audio" class="form-field-base light-field d-block is-stacked" required
+                       name="audio" id="song-audio" placeholder="Audio">
+
+                <label for="song-image">
+                  <small>Image</small>
+                </label>
+                <input type="text" [(ngModel)]="song.image" class="form-field-base light-field d-block is-stacked" required
+                       name="image" id="song-image" placeholder="Image">
+
+                <label for="song-download">
+                  <small>Download</small>
+                </label>
+                <input type="text" [(ngModel)]="song.download" class="form-field-base light-field d-block is-stacked"
+                       name="download" id="song-download" placeholder="Download">
+
+                <label for="song-author">
+                  <small>Author</small>
+                </label>
+                <input type="text" [(ngModel)]="song.author" class="form-field-base light-field d-block is-stacked"
+                       name="author" id="song-author" placeholder="Author">
+
+              </div>
+
+              <div class="col-md-6">
+                <div *ngFor="let genre of genre_list; let i=index" class="col-xs-6 col-md-6" style="float: left">
+                  <div class="form-group">
+                    <label>
+                      <small>{{ genre }}</small>
+                    </label>
+                    <input [name]="genre" [placeholder]="genre" [(ngModel)]="song.genres[genre]"
+                           class="form-field-base light-field d-block is-stacked" type="number">
+                  </div>
+                </div>
+
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label>
+                      <small>Genre Total (100)</small>
+                    </label>
+                    <input type="text" [value]="genreTotal" class="form-field-base light-field d-block is-stacked"
+                           name="song-genre-total" placeholder="Genre Total">
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+
+          <div class="row">
+              <button class="form-btn d-block">Submit</button>
+          </div>
       </form>
     </div>
   </div>

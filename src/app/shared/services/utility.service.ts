@@ -18,17 +18,14 @@ export class UtilityService {
 
 
   public buildGenreQuery(genres: Array<string>) {
-
-  let ref =
+    let ref =
       {
         "where": {
           "and": [
-            {"genres.house": {"exists": "true"}}
           ]
         },
         "order": "created DESC"
       };
-
   }
 
   public buildDateQuery(start_day: number, end_day: number, size: number): any {

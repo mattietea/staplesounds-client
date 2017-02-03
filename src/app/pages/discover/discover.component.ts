@@ -20,9 +20,10 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   private sidenav_vis_subscription: Subscription;
 
   constructor(private _http: Http, private _songService: SongService, private _playerService: PlayerService, private _layoutService: LayoutService) {
-    this._songService.setDiscoverSongs(QUERY_DESC);
+    this._songService.setDiscoverSongs();
     this.songs_subscription = this._songService.getDiscoverSongs().subscribe(
-      res => this.songs = res
+      res => this.songs = res,
+      err => console.log(err)
     );
     this.sidenav_vis_subscription = this._layoutService.getSidenavVis().subscribe(
       res => this.sidenav_vis = res

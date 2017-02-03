@@ -8,5 +8,5 @@
   <input  type="text"     [(ngModel)]="user.lastName"  name="lastName"  class="form-field-base d-block is-stacked text-center" placeholder="Last Name"     autocomplete="false" *ngIf="!is_signing_in">
   <input  type="email"    [(ngModel)]="user.email"     name="email"     class="form-field-base d-block is-stacked text-center" placeholder="Email Address" autocomplete="false">
   <input  type="password" [(ngModel)]="user.password"  name="password"  class="form-field-base d-block is-stacked text-center" placeholder="Password"      autocomplete="false">
-  <button type="button"   (click)="register()"         name="submit"    class="form-btn d-block text-center"> Submit </button>
+  <button type="submit"   (click)="register()"         name="submit"    class="form-btn d-block text-center"> Submit </button>
 </form>

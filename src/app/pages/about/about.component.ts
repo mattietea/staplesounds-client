@@ -9,11 +9,11 @@ export class AboutComponent implements OnInit {
 
   private admin = [
     {
-      name: "Alec Benco",
+      name: "Alec Benko",
       img: "benco.jpg",
-      username: "benco",
+      username: "benko",
       school: "Harvard",
-      bio: "I watch Top Gear and work in New Jersey as a project engineer."
+      bio: "I don't actually go to Harvard."
     },
     {
       name: "Harry Lewis",
@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
       img: "matt.png",
       username: "mattietea",
       school: "UNC - Chapel Hill",
-      bio: "I just write shitty code"
+      bio: "I just write shitty code."
     }
   ];
 

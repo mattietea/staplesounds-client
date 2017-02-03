@@ -1,6 +1,6 @@
 <div class="search-container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-lg-12">
       <input id="search-input" #searchInput (keyup)="searchSongs(searchInput.value)" type="text" class="search-input" placeholder="Search...">
       <a class="search-info">
         <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
@@ -8,9 +8,8 @@
     </div>
   </div>
 
-  <div class="search-results row" *ngIf="songs">
-    <div *ngFor="let song of songs">
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+  <div class="search-results " *ngIf="songs">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let song of songs" style="float: left">
         <div class="card-result" [routerLink]="['/songs', song.id]" (click)="updateSearchVis()">
           <img [src]="song.image">
           <ul class="song-info">
@@ -25,7 +24,6 @@
             </li>
           </ul>
         </div>
-      </div>
     </div>
   </div>
 </div>
